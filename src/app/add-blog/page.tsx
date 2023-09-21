@@ -3,16 +3,20 @@ import Editor from "@/components/editor/Editor";
 import { postBlog } from "@/utils/api";
 import React, { useState } from "react";
 import { toast } from "react-toastify";
+import { useRouter } from "next/navigation";
 
 const AddBlog: React.FC = () => {
   const [title, setTitle] = useState<string>("");
   const [content, setContent] = useState<string>("");
+  const router = useRouter();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     let response = await postBlog({ title, content });
     if (response.status == "success") {
       toast.success("Blog added successfully");
+
+      router.push("/");
     } else {
       toast.error("Something went wrong. Try again!");
     }
