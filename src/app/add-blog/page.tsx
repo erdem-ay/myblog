@@ -2,21 +2,25 @@
 import Editor from "@/components/editor/Editor";
 import { postBlog } from "@/utils/api";
 import React, { useState } from "react";
+import { toast } from "react-toastify";
 
 const AddBlog: React.FC = () => {
   const [title, setTitle] = useState<string>("");
   const [content, setContent] = useState<string>("");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-postBlog({ title, content });
+    let response = await postBlog({ title, content });
+    if (response.status == "success") {
+      toast.success("Blog added successfully");
+    } else {
+      toast.error("Something went wrong. Try again!");
+    }
   };
 
   const handleChange = (text: string) => {
     setContent(text);
-
   };
-
 
   return (
     <div className="container mx-auto mt-8 flex justify-center">

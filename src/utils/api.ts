@@ -18,10 +18,8 @@ export const postBlog = async (data: BlogType) => {
   });
   if (response.ok) {
     const res = await response.json();
-    console.log(res)
-    return res;
-
+    return { status: "success", ...res };
   } else {
-    throw new Error(response.statusText);
+    return { status: "fail" };
   }
 };
