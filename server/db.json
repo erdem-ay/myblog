@@ -1,19 +1,74 @@
 {
-    "posts": [
-        {
-            "id": 1,
-            "title": "json-server",
-            "content": "typicode"
-        }
-    ],
-    "comments": [
-        {
-            "id": 1,
-            "body": "some comment",
-            "postId": 1
-        }
-    ],
-    "profile": {
-        "name": "typicode"
+  "posts": [
+    {
+      "title": "Erdem",
+      "content": "<p>AY</p>",
+      "id": 2
+    },
+    {
+      "title": "erdede",
+      "content": "<p>dedede</p>",
+      "id": 3
+    },
+    {
+      "title": "erde",
+      "content": "<p>erdedede</p>",
+      "id": 4
+    },
+    {
+      "title": "erdededede",
+      "content": "<p>dedededede</p>",
+      "id": 5
+    },
+    {
+      "title": "erdededede",
+      "content": "<p>dedededede</p>",
+      "id": 6
+    },
+    {
+      "title": "erdededede",
+      "content": "<p>dedededede</p>",
+      "id": 7
+    },
+    {
+      "title": "idris",
+      "content": "<p>ideris</p>",
+      "id": 8
+    },
+    {
+      "title": "e",
+      "content": "<p>a</p>",
+      "id": 9
+    },
+    {
+      "title": "a",
+      "content": "<p>e</p>",
+      "id": 10
+    },
+    {
+      "title": "ea",
+      "content": "<p>ae</p>",
+      "id": 11
+    },
+    {
+      "title": "ea",
+      "content": "<p>ae</p>",
+      "id": 12
+    },
+    {
+      "title": "ea",
+      "content": "<p>aa</p>",
+      "id": 13
     }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
 }

@@ -1,5 +1,5 @@
 export type BlogType = {
-  id: string;
+  id?: string;
   title: string;
   content: string;
 };

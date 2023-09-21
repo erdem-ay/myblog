@@ -1,5 +1,27 @@
+import { BlogType } from "./types";
+
 export const getBlogs = async () => {
-    const response = await fetch('http://localhost:3000/posts');
-    const data = await response.json();
-    return data;
-}
+  const response = await fetch("http://localhost:3000/posts", {
+    cache: "no-cache",
+  });
+  const data = await response.json();
+  return data;
+};
+
+export const postBlog = async (data: BlogType) => {
+  const response = await fetch("http://localhost:3000/posts", {
+    method: "POST",
+    body: JSON.stringify(data),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+  if (response.ok) {
+    const res = await response.json();
+    console.log(res)
+    return res;
+
+  } else {
+    throw new Error(response.statusText);
+  }
+};

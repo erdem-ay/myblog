@@ -1,5 +1,6 @@
 "use client";
 import Editor from "@/components/editor/Editor";
+import { postBlog } from "@/utils/api";
 import React, { useState } from "react";
 
 const AddBlog: React.FC = () => {
@@ -8,12 +9,14 @@ const AddBlog: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log(title, content);
+postBlog({ title, content });
   };
 
   const handleChange = (text: string) => {
     setContent(text);
+
   };
+
 
   return (
     <div className="container mx-auto mt-8 flex justify-center">
