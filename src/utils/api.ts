@@ -1,7 +1,10 @@
 import { BlogType } from "./types";
+const blogUrl = process.env.BLOG_URL;
+
+
 
 export const getBlogs = async () => {
-  const response = await fetch("http://localhost:3000/posts", {
+  const response = await fetch(`${blogUrl}`, {
     cache: "no-cache",
   });
   const data = await response.json();
@@ -9,7 +12,8 @@ export const getBlogs = async () => {
 };
 
 export const postBlog = async (data: BlogType) => {
-  const response = await fetch("http://localhost:3000/posts", {
+  console.log(blogUrl,"Erdem")
+  const response = await fetch(`${blogUrl}`, {
     method: "POST",
     body: JSON.stringify(data),
     headers: {

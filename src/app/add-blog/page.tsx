@@ -7,18 +7,23 @@ import { useRouter } from "next/navigation";
 
 const AddBlog: React.FC = () => {
   const [title, setTitle] = useState<string>("");
+  const [author, setAuthor] = useState<string>("");
   const [content, setContent] = useState<string>("");
   const router = useRouter();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    let response = await postBlog({ title, content });
-    if (response.status == "success") {
-      toast.success("Blog added successfully");
-
-      router.push("/");
-    } else {
-      toast.error("Something went wrong. Try again!");
+    try {
+      const response = await postBlog({ title, body :content, author });
+      if (response.status === "success") {
+        toast.success("Blog added successfully");
+        router.push("/");
+      } else {
+        toast.error("Something went wrong. Try again!");
+      }
+    } catch (error) {
+      console.error("An error occurred while posting the blog:", error);
+      toast.error("An error occurred. Please try again later.");
     }
   };
 
@@ -40,6 +45,20 @@ const AddBlog: React.FC = () => {
               id="title"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
+              className="w-full p-2 border rounded"
+              required
+              autoFocus
+            />
+          </div>
+          <div className="mb-4">
+            <label htmlFor="author" className="block text-lg font-medium">
+              Author:
+            </label>
+            <input
+              type="text"
+              id="author"
+              value={author}
+              onChange={(e) => setAuthor(e.target.value)}
               className="w-full p-2 border rounded"
               required
               autoFocus

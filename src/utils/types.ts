@@ -1,6 +1,7 @@
-export type BlogType = {
+
+export interface BlogType {
   id?: string;
   title: string;
-  content: string;
-};
-
+  body: string;
+  author: string;
+}
