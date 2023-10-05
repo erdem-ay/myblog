@@ -12,7 +12,7 @@ const blogs:BlogType[] = await getBlogs();
       {blogs.map((blog) => (
         <div key={blog.id}>
           <h1>{blog.title}</h1>
-          <p>{blog.body}</p>
+          <div dangerouslySetInnerHTML={{ __html: blog.body }} />
           <p>{blog.author}</p>
         </div>
         ))}

@@ -8,13 +8,13 @@ import { useRouter } from "next/navigation";
 const AddBlog: React.FC = () => {
   const [title, setTitle] = useState<string>("");
   const [author, setAuthor] = useState<string>("");
-  const [content, setContent] = useState<string>("");
+  const [body, setBody] = useState<string>("");
   const router = useRouter();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const response = await postBlog({ title, body :content, author });
+      const response = await postBlog({ title, body, author });
       if (response.status === "success") {
         toast.success("Blog added successfully");
         router.push("/");
@@ -28,7 +28,7 @@ const AddBlog: React.FC = () => {
   };
 
   const handleChange = (text: string) => {
-    setContent(text);
+    setBody(text);
   };
 
   return (
@@ -61,22 +61,21 @@ const AddBlog: React.FC = () => {
               onChange={(e) => setAuthor(e.target.value)}
               className="w-full p-2 border rounded"
               required
-              autoFocus
             />
           </div>
           <div className="mb-4">
-            <label htmlFor="content" className="block text-lg font-medium">
-              Contents:
+            <label htmlFor="body" className="block text-lg font-medium">
+              Body:
             </label>
             <Editor
               placeholder="Type here"
-              value={content}
+              value={body}
               onChange={handleChange}
             />
             {/* <textarea
-              id="content"
-              value={content}
-              onChange={(e) => setContent(e.target.value)}
+              id="body"
+              value={body}
+              onChange={(e) => setBody(e.target.value)}
               rows={6}
               className="w-full p-2 border rounded"
               required
