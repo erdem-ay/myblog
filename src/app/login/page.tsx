@@ -25,7 +25,7 @@ const Login = () => {
 
       if (response.ok) {
         router.push("/");
-        toast.success("Login successful");
+        toast.success("Hello");
       } else {
         toast.error("The email or password you entered is incorrect.");
       }

@@ -72,14 +72,6 @@ const AddBlog: React.FC = () => {
               value={body}
               onChange={handleChange}
             />
-            {/* <textarea
-              id="body"
-              value={body}
-              onChange={(e) => setBody(e.target.value)}
-              rows={6}
-              className="w-full p-2 border rounded"
-              required
-            /> */}
           </div>
           <button
             type="submit"

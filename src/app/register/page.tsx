@@ -1,35 +1,31 @@
-"use client"
+"use client";
 import React, { useState } from "react";
 import Link from "next/link";
+import { register } from "@/utils/api";
+import { useRouter } from "next/navigation";
+import { toast } from "react-toastify";
 
 const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
+  const router = useRouter();
 
-  const handleEmailChange = (e) => {
-    setEmail(e.target.value);
-  };
-
-  const handlePasswordChange = (e) => {
-    setPassword(e.target.value);
-  };
-
-  const handleFirstNameChange = (e) => {
-    setFirstName(e.target.value);
-  };
-
-  const handleLastNameChange = (e) => {
-    setLastName(e.target.value);
-  };
-
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Email:", email);
-    console.log("Password:", password);
-    console.log("First Name:", firstName);
-    console.log("Last Name:", lastName);
+    try {
+      const response = await register({ email, password, firstName, lastName });
+      if (response.status === "success") {
+        toast.success("Blog added successfully");
+        router.push("/login");
+      } else {
+        toast.error("Something went wrong. Try again!");
+      }
+    } catch (error) {
+      console.error("An error occurred while posting the blog:", error);
+      toast.error("An error occurred. Please try again later.");
+    }
   };
 
   return (
@@ -51,7 +47,7 @@ const Register = () => {
               type="text"
               id="email"
               value={email}
-              onChange={handleEmailChange}
+              onChange={(e) => setEmail(e.target.value)}
               required
               className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-blue-400"
             />
@@ -67,7 +63,7 @@ const Register = () => {
               type="password"
               id="password"
               value={password}
-              onChange={handlePasswordChange}
+              onChange={(e) => setPassword(e.target.value)}
               required
               className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-blue-400"
             />
@@ -83,7 +79,7 @@ const Register = () => {
               type="text"
               id="firstName"
               value={firstName}
-              onChange={handleFirstNameChange}
+              onChange={(e) => setFirstName(e.target.value)}
               required
               className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-blue-400"
             />
@@ -99,7 +95,7 @@ const Register = () => {
               type="text"
               id="lastName"
               value={lastName}
-              onChange={handleLastNameChange}
+              onChange={(e) => setLastName(e.target.value)}
               required
               className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-blue-400"
             />
