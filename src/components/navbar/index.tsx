@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { FaHome, FaInfoCircle, FaEnvelope } from 'react-icons/fa';
-import { BsPenFill } from 'react-icons/bs';
+import { BsPenFill,BsFillPersonFill } from 'react-icons/bs';
 
 const Navbar: React.FC = () => {
   return (
@@ -9,14 +9,14 @@ const Navbar: React.FC = () => {
         <Link href="/">
           <div className="flex items-center cursor-pointer space-x-2 text-white hover:text-blue-300 transition">
             <FaHome className="text-3xl" />
-            <span className="text-2xl font-bold">My Blog</span>
+            <span className="text-2xl font-bold">Wy Blog</span>
           </div>
         </Link>
         <div className="flex space-x-4">
           <CustomLink href="/about" label="About" icon={<FaInfoCircle className="text-xl" />} />
           <CustomLink href="/contact" label="Contact" icon={<FaEnvelope className="text-xl" />} />
           <CustomLink href="/add-blog" label="Add Blog" icon={<BsPenFill className="text-xl" />} />
-          
+          <CustomLink href="/login" label="Login" icon={<BsFillPersonFill className="text-xl" />} />
         </div>
       </div>
     </nav>
