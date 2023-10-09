@@ -72,12 +72,14 @@ const AddBlog: React.FC = () => {
               onChange={handleChange}
             />
           </div>
-          <button
-            type="submit"
-            className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-400 transition"
-          >
-            Gönder
-          </button>
+          <div className="flex items-end justify-center">
+            <button
+              type="submit"
+              className="bg-blue-500 text-white px-4 py-2 w-40 rounded hover:bg-blue-400 transition flex justify-center text-lg"
+            >
+              Send
+            </button>
+          </div>
         </form>
       </div>
     </div>
