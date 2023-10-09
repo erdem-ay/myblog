@@ -31,57 +31,59 @@ const AddBlog: React.FC = () => {
   };
 
   return (
-    <div className="container mx-auto mt-8 flex justify-center">
-      <div className="w-1/2">
-        <h1 className="text-2xl font-bold mb-4">New Blog</h1>
-        <form onSubmit={handleSubmit}>
-          <div className="mb-4">
-            <label htmlFor="title" className="block text-lg font-medium">
-              Title:
-            </label>
-            <input
-              type="text"
-              id="title"
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
-              className="w-full p-2 border rounded"
-              required
-              autoFocus
-            />
-          </div>
-          <div className="mb-4">
-            <label htmlFor="author" className="block text-lg font-medium">
-              Author:
-            </label>
-            <input
-              type="text"
-              id="author"
-              value={author}
-              onChange={(e) => setAuthor(e.target.value)}
-              className="w-full p-2 border rounded"
-              required
-            />
-          </div>
-          <div className="mb-4">
-            <label htmlFor="body" className="block text-lg font-medium">
-              Body:
-            </label>
-            <Editor
-              placeholder="Type here"
-              value={body}
-              onChange={handleChange}
-            />
-          </div>
-          <div className="flex items-end justify-center">
-            <button
-              type="submit"
-              className="bg-blue-500 text-white px-4 py-2 w-40 rounded hover:bg-blue-400 transition flex justify-center text-lg"
-            >
-              Send
-            </button>
-          </div>
-        </form>
-      </div>
+    <div className="py-12 px-4 sm:px-6 lg:px-8 flex-1 flex justify-center items-center"
+    style={{ backgroundImage: 'url("https://picsum.photos/1600/900")' }}>
+<div className="w-1/2 bg-white p-8 rounded-lg shadow-md">
+  <h1 className="text-2xl font-bold mb-4">New Blog</h1>
+  <form onSubmit={handleSubmit} className="space-y-4">
+    <div>
+      <label htmlFor="title" className="block text-lg font-medium">
+        Title:
+      </label>
+      <input
+        type="text"
+        id="title"
+        value={title}
+        onChange={(e) => setTitle(e.target.value)}
+        className="w-full p-2 border rounded-lg"
+        required
+        autoFocus
+      />
+    </div>
+    <div>
+      <label htmlFor="author" className="block text-lg font-medium">
+        Author:
+      </label>
+      <input
+        type="text"
+        id="author"
+        value={author}
+        onChange={(e) => setAuthor(e.target.value)}
+        className="w-full p-2 border rounded-lg"
+        required
+      />
+    </div>
+    <div>
+      <label htmlFor="body" className="block text-lg font-medium">
+        Body:
+      </label>
+      <Editor
+        placeholder="Type here"
+        value={body}
+        onChange={handleChange}
+      />
+    </div>
+    <div className="text-center">
+      <button
+        type="submit"
+        className="bg-blue-500 text-white px-4 py-2 w-40 rounded-lg hover:bg-blue-400 transition text-lg"
+      >
+        Send
+      </button>
+    </div>
+  </form>
+</div>
+
     </div>
   );
 };

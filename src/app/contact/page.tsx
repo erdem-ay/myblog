@@ -27,7 +27,10 @@ const Contact = () => {
   };
 
   return (
-    <div className="bg-gray-100 py-12 px-4 sm:px-6 lg:px-8 flex-1 flex justify-center items-center">
+    <div
+      className="bg-gray-100 py-12 px-4 sm:px-6 lg:px-8 flex-1 flex justify-center items-center"
+      style={{ backgroundImage: 'url("https://picsum.photos/1600/900")' }}
+    >
       <div className="max-w-3xl mx-auto bg-white p-8 shadow-md rounded-lg">
         <h1 className="text-3xl font-semibold mb-6">Contact Us</h1>
         <p className="text-gray-600 mb-4">
