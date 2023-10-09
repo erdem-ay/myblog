@@ -16,7 +16,6 @@ export const getBlogs = async () => {
 };
 
 export const postBlog = async (data: BlogType) => {
-  console.log(blogUrl,"Erdem")
   const response = await fetch(`${blogUrl}`, {
     method: "POST",
     body: JSON.stringify(data),

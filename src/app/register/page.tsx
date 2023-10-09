@@ -23,17 +23,16 @@ const Register = () => {
         toast.error("Something went wrong. Try again!");
       }
     } catch (error) {
-      console.error("An error occurred while posting the blog:", error);
       toast.error("An error occurred. Please try again later.");
     }
   };
 
   return (
     <div
-      className="min-h-screen bg-cover bg-center bg-no-repeat"
+      className="bg-cover bg-center w-full bg-no-repeat flex-1 flex justify-center items-center"
       style={{ backgroundImage: 'url("https://picsum.photos/1600/900")' }}
     >
-      <div className="max-w-md mx-auto mt-10 p-6 bg-white rounded-lg shadow-xl ">
+      <div className="max-w-md w-10/12 mx-auto p-6 bg-white rounded-lg shadow-xl ">
         <h2 className="text-2xl font-semibold mb-4">Register</h2>
         <form onSubmit={handleSubmit}>
           <div className="mb-4">

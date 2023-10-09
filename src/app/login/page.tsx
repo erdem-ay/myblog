@@ -1,7 +1,6 @@
 "use client";
 import React, { useState } from "react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
 
 let loginUrl = process.env.LOGIN_URL;
@@ -9,7 +8,6 @@ let loginUrl = process.env.LOGIN_URL;
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const router = useRouter();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -24,8 +22,15 @@ const Login = () => {
       });
 
       if (response.ok) {
-        router.push("/");
-        toast.success("Hello");
+        const data = await response.json();
+        const token = data.token;
+        const firstName = data.firstName;
+        const lastName = data.lastName;
+        localStorage.setItem("token", token);
+        localStorage.setItem("firstName", firstName);
+        localStorage.setItem("lastName", lastName);
+        toast.success(`Hello ${firstName} ${lastName}`);
+        window.location.href = "/";
       } else {
         toast.error("The email or password you entered is incorrect.");
       }
@@ -36,10 +41,10 @@ const Login = () => {
 
   return (
     <div
-      className="min-h-screen bg-cover bg-center bg-no-repeat"
+      className="bg-cover bg-center w-full bg-no-repeat flex-1 flex justify-center items-center"
       style={{ backgroundImage: 'url("https://picsum.photos/1600/900")' }}
     >
-      <div className="max-w-md mx-auto mt-10 p-6 bg-white rounded-lg shadow-xl ">
+      <div className="max-w-md w-10/12 mx-auto p-6 bg-white rounded-lg shadow-xl">
         <h2 className="text-2xl font-semibold mb-4">Login</h2>
         <form onSubmit={handleSubmit}>
           <div className="mb-4">

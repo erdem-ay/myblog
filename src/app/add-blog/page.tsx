@@ -22,7 +22,6 @@ const AddBlog: React.FC = () => {
         toast.error("Something went wrong. Try again!");
       }
     } catch (error) {
-      console.error("An error occurred while posting the blog:", error);
       toast.error("An error occurred. Please try again later.");
     }
   };
