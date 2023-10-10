@@ -14,7 +14,7 @@ const Footer: React.FC = () => {
             rel="noopener noreferrer"
             className="mx-2"
           >
-            <BsInstagram alt="İnstagram" className="w-6 h-6 text-red-900" />
+            <BsInstagram alt="İnstagram" className="w-6 h-6 text-white" />
           </a>
           <a
             href="https://www.facebook.com/"
@@ -22,7 +22,7 @@ const Footer: React.FC = () => {
             rel="noopener noreferrer"
             className="mx-2"
           >
-            <BsFacebook alt="Facebook" className="w-6 h-6 text-red-900" />
+            <BsFacebook alt="Facebook" className="w-6 h-6 text-white" />
           </a>
           <a
             href="https://www.twitter.com/"
@@ -30,7 +30,7 @@ const Footer: React.FC = () => {
             rel="noopener noreferrer"
             className="mx-2"
           >
-            <FaXTwitter alt="Twitter" className="w-6 h-6 text-red-900" />
+            <FaXTwitter alt="Twitter" className="w-6 h-6 text-white" />
           </a>
         </div>
       </div>

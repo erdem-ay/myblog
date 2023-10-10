@@ -11,7 +11,6 @@ export default async function Home() {
         <div className="flex" key={index}>
           <h1>{blog.title}</h1>
           <div dangerouslySetInnerHTML={{ __html: blog.body }} />
-          <p>{blog.author}</p>
         </div>
       ))}
     </div>

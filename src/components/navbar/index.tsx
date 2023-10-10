@@ -8,8 +8,8 @@ interface AuthToken {
   token: string | null;
 }
 
-let firstName:string | null = "";
-let lastName:string | null = "";
+let firstName: string | null = "";
+let lastName: string | null = "";
 if (typeof window !== "undefined") {
   firstName = window.localStorage.getItem("firstName");
   lastName = window.localStorage.getItem("lastName");
@@ -57,30 +57,28 @@ const Navbar: React.FC = () => {
           />
           {token?.token ? (
             <div className="flex space-x-4">
-              <div className="flex space-x-4">
-              <CustomLink
-                href="/my-blog"
-                label="My Blog"
-                icon={<BsPenFill className="text-xl" />}
-                />
-              <CustomLink
-                href="/add-blog"
-                label="Add Blog"
-                icon={<BsPenFill className="text-xl" />}
-                />
-                </div>
               <div className="flex my-auto relative">
                 <BsFillPersonFill
                   onClick={toggleDiv}
                   className="text-2xl text-green-500 hover:text-white cursor-pointer"
                 />
                 {isOpen && (
-                  <div className="absolute top-8  right-0 w-36 bg-white p-8 rounded-lg shadow-lg">
+                  <div className="absolute top-8 flex flex-col py-4  items-center right-0 w-40 bg-gray-400 p-8 rounded-lg shadow-lg">
                     <p className="cursor-default">
-                      {firstName}{" "}{lastName}
+                      {firstName} {lastName}
                     </p>
+                      <Link href="my-blog">
+
+                    <div className="flex ">
+                        My Blogs
+                    </div>
+                      </Link>
+                    <Link href="add-blog">Add Blog</Link>
                     <Link href="settings">Setting</Link>
-                    <button className="text-red-500" onClick={tokenDelete}>
+                    <button
+                      className="text-red-500 cursor-pointer"
+                      onClick={tokenDelete}
+                    >
                       Logout
                     </button>
                   </div>
