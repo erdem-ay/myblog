@@ -77,7 +77,7 @@ const Navbar: React.FC = () => {
                 {isOpen && (
                   <div className="absolute top-8  right-0 w-36 bg-white p-8 rounded-lg shadow-lg">
                     <p className="cursor-default">
-                      {firstName}&nbsp;{lastName}
+                      {firstName}{" "}{lastName}
                     </p>
                     <Link href="settings">Setting</Link>
                     <button className="text-red-500" onClick={tokenDelete}>
