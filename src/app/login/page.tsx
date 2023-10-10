@@ -26,9 +26,11 @@ const Login = () => {
         const token = data.token;
         const firstName = data.firstName;
         const lastName = data.lastName;
+        const id = data.id;
         localStorage.setItem("token", token);
         localStorage.setItem("firstName", firstName);
         localStorage.setItem("lastName", lastName);
+        localStorage.setItem("id", id);
         toast.success(`Hello ${firstName} ${lastName}`);
         window.location.href = "/";
       } else {

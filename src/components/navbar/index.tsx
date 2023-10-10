@@ -57,11 +57,18 @@ const Navbar: React.FC = () => {
           />
           {token?.token ? (
             <div className="flex space-x-4">
+              <div className="flex space-x-4">
+              <CustomLink
+                href="/my-blog"
+                label="My Blog"
+                icon={<BsPenFill className="text-xl" />}
+                />
               <CustomLink
                 href="/add-blog"
                 label="Add Blog"
                 icon={<BsPenFill className="text-xl" />}
-              />
+                />
+                </div>
               <div className="flex my-auto relative">
                 <BsFillPersonFill
                   onClick={toggleDiv}
@@ -69,7 +76,7 @@ const Navbar: React.FC = () => {
                 />
                 {isOpen && (
                   <div className="absolute top-8  right-0 w-36 bg-white p-8 rounded-lg shadow-lg">
-                    <p>
+                    <p className="cursor-default">
                       {firstName}&nbsp;{lastName}
                     </p>
                     <Link href="settings">Setting</Link>

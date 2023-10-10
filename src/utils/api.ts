@@ -4,9 +4,6 @@ const blogUrl = process.env.BLOG_URL;
 const registerURL = process.env.REGISTER_URL;
 
 
-
-
-
 export const getBlogs = async () => {
   const response = await fetch(`${blogUrl}`, {
     cache: "no-cache",
@@ -23,6 +20,7 @@ export const postBlog = async (data: BlogType) => {
       "Content-Type": "application/json",
     },
   });
+  console.log(response);
   if (response.ok) {
     const res = await response.json();
     return { status: "success", ...res };
