@@ -12,6 +12,7 @@ export const getBlogs = async () => {
 };
 
 export const getUsersBlogs = async (userId: string | null) => {
+  console.log(userId)
   const response = await fetch(`${blogUrl}?author=${userId}`, {
     cache: "no-cache",
   });

@@ -1,7 +1,8 @@
 "use client";
 import Link from "next/link";
 import { FaHome, FaInfoCircle, FaEnvelope } from "react-icons/fa";
-import { BsPenFill, BsFillPersonFill } from "react-icons/bs";
+import { BsFillPersonFill } from "react-icons/bs";
+import { FaBlog, FaPlus, FaCog, FaSignOutAlt } from "react-icons/fa";
 import { useEffect, useState } from "react";
 
 interface AuthToken {
@@ -14,6 +15,8 @@ if (typeof window !== "undefined") {
   firstName = window.localStorage.getItem("firstName");
   lastName = window.localStorage.getItem("lastName");
 }
+
+console.log(firstName);
 
 const Navbar: React.FC = () => {
   const [token, setToken] = useState<AuthToken>();
@@ -63,23 +66,35 @@ const Navbar: React.FC = () => {
                   className="text-2xl text-green-500 hover:text-white cursor-pointer"
                 />
                 {isOpen && (
-                  <div className="absolute top-8 flex flex-col py-4  items-center right-0 w-40 bg-gray-400 p-8 rounded-lg shadow-lg">
-                    <p className="cursor-default">
-                      {firstName} {lastName}
-                    </p>
-                      <Link href="my-blog">
-
-                    <div className="flex ">
-                        My Blogs
+                  <div className="absolute top-8 flex flex-col py-4 mx-auto  right-0 w-44 bg-white p-8 rounded-lg shadow-lg">
+                    <div className="cursor-default flex items-center">
+                      <BsFillPersonFill />
+                      <p className="ml-2">
+                        {firstName} {lastName}
+                      </p>
                     </div>
-                      </Link>
-                    <Link href="add-blog">Add Blog</Link>
-                    <Link href="settings">Setting</Link>
+                    <Link href="my-blog">
+                      <div className="flex items-center">
+                        <FaBlog /> <h1 className="ml-2">My Blogs</h1>
+                      </div>
+                    </Link>
+                    <Link href="add-blog">
+                      <div className="flex items-center">
+                        <FaPlus /> <h3 className="ml-2">Add Blog</h3>
+                      </div>
+                    </Link>
+                    <Link href="settings">
+                      <div className="flex items-center">
+                        <FaCog /> <h3 className="ml-2">Settings</h3>
+                      </div>
+                    </Link>
                     <button
                       className="text-red-500 cursor-pointer"
                       onClick={tokenDelete}
                     >
-                      Logout
+                      <div className="flex items-center">
+                        <FaSignOutAlt /> <span className="ml-2">Logout</span>
+                      </div>
                     </button>
                   </div>
                 )}

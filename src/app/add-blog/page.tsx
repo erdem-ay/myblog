@@ -3,7 +3,6 @@ import Editor from "@/components/editor/Editor";
 import { postBlog } from "@/utils/api";
 import React, { useState } from "react";
 import { toast } from "react-toastify";
-import { useRouter } from "next/navigation";
 
 let id: string | null = "";
 if (typeof window !== "undefined") {
@@ -22,7 +21,6 @@ if (id) {
 const AddBlog: React.FC = () => {
   const [title, setTitle] = useState<string>("");
   const [body, setBody] = useState<string>("");
-  const router = useRouter();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -30,7 +28,7 @@ const AddBlog: React.FC = () => {
     console.log(response);
     if (response.status === "success") {
       toast.success("Blog added successfully");
-      router.push("/");
+      window.location.href = "/";
     } else {
       toast.error("Something went wrong. Try again!");
     }
@@ -42,7 +40,7 @@ const AddBlog: React.FC = () => {
 
   return (
     <div
-      className="py-12 px-4 sm:px-6 lg:px-8 flex-1 flex justify-center items-center"
+      className="bg-cover bg-center w-full bg-no-repeat py-12 px-4 sm:px-6 lg:px-8 flex-1 flex justify-center items-center"
       style={{ backgroundImage: 'url("https://picsum.photos/1600/900")' }}
     >
       <div className="w-1/2 bg-white p-8 rounded-lg shadow-md">
