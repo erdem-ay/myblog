@@ -20,6 +20,14 @@ export const getUsersBlogs = async (userId: string | null) => {
   return data;
 };
 
+export const deleteBlog = async (blogId: string | null) => {
+  const response = await fetch(`${blogUrl}/${blogId}`, { method: 'DELETE' })
+  const data = await response.json();
+  
+  console.log(data)
+  return data;
+}
+
 export const postBlog = async (data: BlogType) => {
   const response = await fetch(`${blogUrl}`, {
     method: "POST",
