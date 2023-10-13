@@ -1,33 +1,50 @@
 "use client";
 import Editor from "@/components/editor/Editor";
-import { postBlog } from "@/utils/api";
-import React, { useState } from "react";
+import { getBlog } from "@/utils/api";
+import React, { useEffect, useState } from "react";
+import { putBlog } from "@/utils/api";
 import { toast } from "react-toastify";
+import { useRouter } from "next/navigation";
+
+type propsTypes = {
+  params: {
+    id: string;
+  };
+};
 
 let id: string | null = "";
+
 if (typeof window !== "undefined") {
   id = window.localStorage.getItem("id");
 }
 
-
-let currentUser: { id: string } ;
-if (id) {
-  currentUser = {id};
-} else {
-  currentUser = { id: "defaultUserId" };
-}
-
-
-const AddBlog: React.FC = () => {
+const EditBlog = (props: propsTypes) => {
+  const [blog, setBlog] = useState({});
   const [title, setTitle] = useState<string>("");
   const [body, setBody] = useState<string>("");
+  const router = useRouter()
+  console.log(body);
+  console.log(id);
+
+  useEffect(() => {
+    getBlog(props.params.id).then((response) => {
+      console.log(response);
+      setTitle(response.title);
+      setBody(response.body);
+    });
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const response = await postBlog({ title, body, author: currentUser.id });
+    const response = await putBlog(props.params.id, {
+      title,
+      body,
+      author: id,
+    });
     if (response.status === "success") {
-      toast.success("Blog added successfully");
-      window.location.href = "/";
+      toast.success("Changes saved");
+      // window.location.href = "/my-blog";
+      router.push("/my-blog")
     } else {
       toast.error("Something went wrong. Try again!");
     }
@@ -43,7 +60,7 @@ const AddBlog: React.FC = () => {
       style={{ backgroundImage: 'url("https://picsum.photos/1600/900")' }}
     >
       <div className="w-1/2 bg-white p-8 rounded-lg shadow-md">
-        <h1 className="text-2xl font-bold mb-4">New Blog</h1>
+        <h1 className="text-2xl font-bold mb-4">Edit Blog</h1>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
             <label htmlFor="title" className="block text-lg font-medium">
@@ -83,4 +100,4 @@ const AddBlog: React.FC = () => {
   );
 };
 
-export default AddBlog;
+export default EditBlog;

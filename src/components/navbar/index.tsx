@@ -16,7 +16,6 @@ if (typeof window !== "undefined") {
   lastName = window.localStorage.getItem("lastName");
 }
 
-console.log(firstName);
 
 const Navbar: React.FC = () => {
   const [token, setToken] = useState<AuthToken>();

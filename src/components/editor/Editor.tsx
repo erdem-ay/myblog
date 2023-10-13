@@ -7,6 +7,8 @@ interface EditorProps {
     onChange: (newValue: string) => void;
   }
 
+  
+
   const Editor: React.FC<EditorProps> = ({ placeholder, value, onChange }) => {
   return (
     <SunEditor
@@ -36,7 +38,7 @@ interface EditorProps {
           ],
         ],
       }}
-      defaultValue={value}
+      setContents={value}
       onChange={(val) => onChange(val)}
     />
   );
