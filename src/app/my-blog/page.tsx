@@ -1,37 +1,38 @@
-"use client";
+"use client"
 import React, { useState, useEffect } from "react";
 import { getUsersBlogs, deleteBlog } from "@/utils/api";
 import { BlogType } from "@/utils/types";
-import { AiOutlineDelete } from "react-icons/Ai";
+import { AiOutlineDelete } from "react-icons/ai"; 
 
-let id: string | null = "";
-if (typeof window !== "undefined") {
-  id = window.localStorage.getItem("id");
-}
-
-const MyBlog = async () => {
-  // const blogs: BlogType[] = await getUsersBlogs(id);
-  const [blogs, setBlogs] = useState([]);
+const MyBlog = () => {
+  const [blogs, setBlogs] = useState<BlogType[]>([]); 
+  let id: string | null = "";
+  
+  if (typeof window !== "undefined") {
+    id = window.localStorage.getItem("id");
+  }
 
   useEffect(() => {
-    getUsersBlogs(id).then((response) => {
-      setBlogs(response);
-    });
+    const fetchData = async () => {
+      try {
+        const _blogs = await getUsersBlogs(id);
+        setBlogs(_blogs);
+      } catch (error) {
+        console.log("Error fetching:", error); 
+      }
+    };
 
-    // const fetchData = async () => {
-    //   try {
-    //     let _blogs = await getUsersBlogs(id);
-    //     setBlogs(_blogs);
-    //   } catch (error) {
-    //   console.log("Error fetching")
-    //   }
-    // };
-
-    // fetchData();
+    fetchData();
   }, [id]);
 
-  const handleDelete = (blogId: string) => {
-    deleteBlog(blogId);
+  const handleDelete = async (blogId: string) => {
+    try {
+      await deleteBlog(blogId);
+      const updatedBlogs = await getUsersBlogs(id);
+      setBlogs(updatedBlogs);
+    } catch (error) {
+      console.log("Error deleting or updating blogs:", error);
+    }
   };
 
   console.log(id);
@@ -42,6 +43,8 @@ const MyBlog = async () => {
     >
       <div className="max-w-2xl mx-auto w-11/12 my-8 ">
         {blogs.map((blog, index) => (
+
+        
           <section
             className="flex flex-col border border-gray-700 bg-white p-12 mb-2 rounded-lg relative"
             key={index}
@@ -52,7 +55,7 @@ const MyBlog = async () => {
               dangerouslySetInnerHTML={{ __html: blog.body }}
             />
             <AiOutlineDelete
-              className="text-red-400 absolute top-4 right-4 text-xl  cursor-pointer"
+              className="text-red-400 absolute top-4 right-4 text-xl cursor-pointer"
               onClick={() => handleDelete(blog._id)}
             />
           </section>
