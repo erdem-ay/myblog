@@ -1,6 +1,6 @@
 "use client";
-import React from "react";
-import { getUsersBlogs } from "@/utils/api";
+import React, { useState, useEffect } from "react";
+import { getUsersBlogs, deleteBlog } from "@/utils/api";
 import { BlogType } from "@/utils/types";
 import { AiOutlineDelete } from "react-icons/Ai";
 
@@ -10,11 +10,29 @@ if (typeof window !== "undefined") {
 }
 
 const MyBlog = async () => {
-  const blogs: BlogType[] = await getUsersBlogs(id);
+  // const blogs: BlogType[] = await getUsersBlogs(id);
+  const [blogs, setBlogs] = useState([]);
 
-  const handleDelete = (blogId:string) => {
-  console.log(blogId);
-  }
+  useEffect(() => {
+    getUsersBlogs(id).then((response) => {
+      setBlogs(response);
+    });
+
+    // const fetchData = async () => {
+    //   try {
+    //     let _blogs = await getUsersBlogs(id);
+    //     setBlogs(_blogs);
+    //   } catch (error) {
+    //   console.log("Error fetching")
+    //   }
+    // };
+
+    // fetchData();
+  }, [id]);
+
+  const handleDelete = (blogId: string) => {
+    deleteBlog(blogId);
+  };
 
   console.log(id);
   return (
@@ -33,7 +51,10 @@ const MyBlog = async () => {
               className="prose max-w-none mt-2"
               dangerouslySetInnerHTML={{ __html: blog.body }}
             />
-            <AiOutlineDelete className="text-red-400 absolute top-4 right-4 text-xl  cursor-pointer"  onClick={()=> handleDelete(blog._id)}/>
+            <AiOutlineDelete
+              className="text-red-400 absolute top-4 right-4 text-xl  cursor-pointer"
+              onClick={() => handleDelete(blog._id)}
+            />
           </section>
         ))}
       </div>
