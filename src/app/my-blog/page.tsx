@@ -72,7 +72,7 @@ const MyBlog = () => {
               />
               <AiOutlineDelete
                 className="text-red-400 absolute top-4 right-4 text-2xl cursor-pointer"
-                onClick={() => handleDelete(blog?._id)}
+                onClick={() => handleDelete(blog?._id ?? "")}
               />
               <Link href={`edit-blog/${blog._id}`}>
                 <MdModeEdit

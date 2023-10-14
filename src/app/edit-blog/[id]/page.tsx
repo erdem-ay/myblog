@@ -39,7 +39,7 @@ const EditBlog = (props: propsTypes) => {
     const response = await putBlog(props.params.id, {
       title,
       body,
-      author: id,
+      author : id as string ,
     });
     if (response.status === "success") {
       toast.success("Changes saved");
