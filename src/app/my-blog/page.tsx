@@ -52,7 +52,7 @@ const MyBlog = () => {
                 No blogs found!
               </h1>
               <p className="text-lg text-gray-600">
-                Looks like you haven't written any blogs yet.
+                Looks like you have not written any blogs yet.
               </p>
               <button className="mt-6 bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-md font-semibold transition duration-300">
                 <Link href="add-blog">Create a Blog</Link>
