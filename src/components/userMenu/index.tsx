@@ -1,13 +1,13 @@
 "use client";
-import { useRef, MouseEvent, useEffect } from 'react';
+import { useRef, MouseEvent, useEffect } from "react";
 import Link from "next/link";
 import { FaBlog, FaPlus, FaCog, FaSignOutAlt } from "react-icons/fa";
 import { BsFillPersonFill } from "react-icons/bs";
 
 interface UserMenuProps {
-    isOpen: boolean;
-    closeMenu: () => void;
-  }
+  isOpen: boolean;
+  closeMenu: () => void;
+}
 
 let firstName: string | null = "";
 let lastName: string | null = "";
@@ -17,21 +17,25 @@ if (typeof window !== "undefined") {
 }
 
 const UserMenu: React.FC<UserMenuProps> = ({ isOpen, closeMenu }) => {
-    const menuRef = useRef<HTMLDivElement | null>(null);
+  const menuRef = useRef<HTMLDivElement | null>(null);
 
-    const handleClickOutside = (event: MouseEvent<HTMLDivElement>) => {
-        if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
-          closeMenu(); 
-        }
-      };
+  useEffect(() => {
+    const handleClickOutside = (event: any) => {
+      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
+        closeMenu();
+      }
+    };
 
-      
-      useEffect(() => {
-        window.addEventListener('mousedown', handleClickOutside);
-        return () => {
-          window.removeEventListener('mousedown', handleClickOutside);
-        };
-      }, [handleClickOutside]);
+    if (isOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    } else {
+      document.removeEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isOpen, closeMenu]);
 
   const tokenDelete = () => {
     localStorage.removeItem("token");
@@ -39,10 +43,7 @@ const UserMenu: React.FC<UserMenuProps> = ({ isOpen, closeMenu }) => {
   };
 
   return (
-    <div
-      ref={menuRef}
-      className={`user-menu ${isOpen ? 'open' : ''}`}
-    >
+    <div ref={menuRef} className={`user-menu ${isOpen ? "open" : ""}`}>
       {/* <div className="absolute top-0 left-0 w-full h-full  opacity-25"></div> */}
       <div className="absolute top-8 flex flex-col py-4 mx-auto right-0 w-44 bg-white p-8 rounded-lg shadow-lg">
         <div className="cursor-default flex items-center">
