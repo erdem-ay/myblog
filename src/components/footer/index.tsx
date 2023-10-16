@@ -3,7 +3,13 @@ import React from "react";
 
 const Footer: React.FC = () => {
   return (
-    <footer className="flex flex-col items-center bg-white text-center text-neutral-900">
+    <footer className="flex flex-col items-center bg-white text-center text-neutral-900 relative">
+      <span
+        className="flex absolute top-4 right-10 text-black cursor-default  text-base font-extrabold "
+        style={{ fontFamily: "Arial, sans-serif", userSelect: "none" }}
+      >
+        Erdem AY
+      </span>
       <div className="container px-3 pt-1">
         <div className="mb-1 flex justify-center">
           <Link
