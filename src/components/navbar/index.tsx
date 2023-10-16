@@ -65,14 +65,14 @@ const Navbar: React.FC = () => {
       <li className="font-semibold text-gray-700">
         <Link href="/about">
           <div className="flex items-center">
-            <FaInfoCircle /> <h1 className="ml-2 hidden md:block">About</h1>
+            <FaInfoCircle /> <span className="ml-2 hidden md:block">About</span>
           </div>
         </Link>
       </li>
       <li className="font-semibold text-gray-700">
         <Link href="/contact">
           <div className="flex items-center">
-            <FaEnvelope /> <h1 className="ml-2 hidden md:block">Contact</h1>
+            <FaEnvelope /> <span className="ml-2 hidden md:block">Contact</span>
           </div>
         </Link>
       </li>
@@ -92,7 +92,7 @@ const Navbar: React.FC = () => {
         ) : (
           <Link href="/login">
             <div className="flex items-center space-x-2">
-              <BsFillPersonFill /> <span className="ml-2 hidden md:block">Login</span>
+              <BsFillPersonFill /> <span className="ml-2 hidden md:block font-semibold">Login</span>
             </div>
           </Link>
         )}
