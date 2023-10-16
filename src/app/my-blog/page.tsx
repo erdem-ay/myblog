@@ -10,7 +10,7 @@ import Loading from "@/components/loading";
 const MyBlog = () => {
   const [blogs, setBlogs] = useState<BlogType[]>([]);
   let id: string | null = "";
-  const [isLoading, setIsLoading] = useState(true)
+  const [isLoading, setIsLoading] = useState(true);
 
   if (typeof window !== "undefined") {
     id = window.localStorage.getItem("id");
@@ -18,14 +18,14 @@ const MyBlog = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      setIsLoading(true)
+      setIsLoading(true);
       try {
         const _blogs = await getUsersBlogs(id);
         setBlogs(_blogs);
       } catch (error) {
         console.log("Error fetching:", error);
       }
-      setIsLoading(false)
+      setIsLoading(false);
     };
 
     fetchData();
@@ -41,20 +41,15 @@ const MyBlog = () => {
     }
   };
 
-  const handleUpdate = async (blogId: string) => {};
-
   return (
     <div
       className="bg-cover bg-center w-full bg-no-repeat flex-1 flex justify-center items-center"
       style={{ backgroundImage: 'url("https://picsum.photos/1600/900")' }}
     >
       <div className="max-w-2xl mx-auto w-11/12 my-8 ">
-
-        {
-        isLoading ? <Loading/> :
-        blogs.length < 1 ? (
-
-
+        {isLoading ? (
+          <Loading />
+        ) : blogs.length < 1 ? (
           <div className="flex justify-center">
             <div className="bg-white w-96 rounded-lg shadow-md p-6 text-center">
               <h1 className="text-3xl text-gray-800 font-bold mb-4">

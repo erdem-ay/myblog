@@ -1,9 +1,9 @@
-"use client"
-import { useEffect, useState } from 'react';
-import Link from 'next/link';
-import { FaInfoCircle, FaEnvelope } from 'react-icons/fa';
-import { BsFillPersonFill } from 'react-icons/bs';
-import UserMenu from '../userMenu/index';
+"use client";
+import { useEffect, useState } from "react";
+import Link from "next/link";
+import { FaInfoCircle, FaEnvelope } from "react-icons/fa";
+import { BsFillPersonFill } from "react-icons/bs";
+import UserMenu from "../userMenu/index";
 
 interface AuthToken {
   token: string | null;
@@ -15,7 +15,7 @@ const Navbar: React.FC = () => {
 
   useEffect(() => {
     const tokenInfo: AuthToken = {
-      token: window.localStorage.getItem('token'),
+      token: window.localStorage.getItem("token"),
     };
     setToken(tokenInfo);
   }, []);
@@ -23,6 +23,8 @@ const Navbar: React.FC = () => {
   const toggleMenu = () => {
     setMenuOpen(!isMenuOpen);
   };
+
+
 
   return (
     <nav className="flex justify-between px-28 items-center bg-white">
@@ -82,15 +84,17 @@ const Navbar: React.FC = () => {
                     onClick={toggleMenu}
                     className="text-2xl text-green-500 hover:text-black cursor-pointer"
                   />
-                 {isMenuOpen && <UserMenu isOpen={isMenuOpen} closeMenu={toggleMenu} />}
+                  {isMenuOpen && (
+                    <UserMenu isOpen={isMenuOpen} closeMenu={toggleMenu} />
+                  )}
                 </div>
               </div>
             ) : (
               <Link href="/login">
-              <div className="flex items-center">
-                <BsFillPersonFill /> <span>Login</span>
-              </div>
-            </Link>
+                <div className="flex items-center space-x-2">
+                  <BsFillPersonFill /> <span className="">Login</span>
+                </div>
+              </Link>
             )}
           </li>
         </ul>
