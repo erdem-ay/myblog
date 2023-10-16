@@ -91,7 +91,7 @@ const Navbar: React.FC = () => {
           </div>
         ) : (
           <Link href="/login">
-            <div className="flex items-center space-x-2">
+            <div className="flex items-center space-x-2 hidden md:block">
               <BsFillPersonFill /> <span className="">Login</span>
             </div>
           </Link>
