@@ -85,7 +85,7 @@ const Login = () => {
             />
           </div>
           <p className="flex justify-end p-2">
-            <Link href="register">Click here to register</Link>
+            <Link href="/register">Click here to register</Link>
           </p>
           <button
             type="submit"

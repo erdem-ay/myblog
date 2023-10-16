@@ -52,17 +52,17 @@ const UserMenu: React.FC<UserMenuProps> = ({ isOpen, closeMenu }) => {
             {firstName} {lastName}
           </p>
         </div>
-        <Link href="my-blog" onClick={closeMenu}>
+        <Link href="/my-blog" onClick={closeMenu}>
           <div className="flex items-center">
             <FaBlog /> <h1 className="ml-2">My Blogs</h1>
           </div>
         </Link>
-        <Link href="add-blog" onClick={closeMenu}>
+        <Link href="/add-blog" onClick={closeMenu}>
           <div className="flex items-center">
             <FaPlus /> <h3 className="ml-2">Add Blog</h3>
           </div>
         </Link>
-        <Link href="settings" onClick={closeMenu}>
+        <Link href="/settings" onClick={closeMenu}>
           <div className="flex items-center">
             <FaCog /> <h3 className="ml-2">Settings</h3>
           </div>

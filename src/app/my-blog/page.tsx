@@ -59,7 +59,7 @@ const MyBlog = () => {
                 Looks like you have not written any blogs yet.
               </p>
               <button className="mt-6 bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-md font-semibold transition duration-300">
-                <Link href="add-blog">Create a Blog</Link>
+                <Link href="/add-blog">Create a Blog</Link>
               </button>
             </div>
           </div>
@@ -78,7 +78,7 @@ const MyBlog = () => {
                 className="text-red-400 absolute top-4 right-4 text-2xl cursor-pointer"
                 onClick={() => handleDelete(blog?._id ?? "")}
               />
-              <Link href={`edit-blog/${blog._id}`}>
+              <Link href={`/edit-blog/${blog._id}`}>
                 <MdModeEdit
                   size={24}
                   className="text-green-400 absolute top-4 right-12 text-xl cursor-pointer"
