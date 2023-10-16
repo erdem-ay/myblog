@@ -59,7 +59,7 @@ const EditBlog = (props: propsTypes) => {
       className="bg-cover bg-center w-full bg-no-repeat py-12 px-4 sm:px-6 lg:px-8 flex-1 flex justify-center items-center"
       style={{ backgroundImage: 'url("https://picsum.photos/1600/900")' }}
     >
-      <div className="w-1/2 bg-white p-8 rounded-lg shadow-md">
+      <div className="w-11/2 bg-white p-8 rounded-lg shadow-md">
         <h1 className="text-2xl font-bold mb-4">Edit Blog</h1>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
