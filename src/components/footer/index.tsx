@@ -10,7 +10,7 @@ const Footer: React.FC = () => {
             href="https://www.facebook.com/"
             target="_blank"
             type="button"
-            className="m-1 h-9 w-9 rounded-full border-2 border-neutral-900 uppercase leading-normal  text-neutral-900 transition duration-150 ease-in-out hover:bg-orange-300 hover:bg-opacity-45 focus:outline-none focus:ring-0"
+            className="m-1 h-9 w-9 rounded-full border-2 border-neutral-900 uppercase leading-normal  text-neutral-900 transition duration-150 ease-in-out hover:bg-orange-300 hover:text-white hover:border-white hover:bg-opacity-45 focus:outline-none focus:ring-0"
             data-te-ripple-init
             data-te-ripple-color="light"
           >
@@ -28,7 +28,7 @@ const Footer: React.FC = () => {
             href="https://twitter.com"
             target="_blank"
             type="button"
-            className="m-1 h-9 w-9 rounded-full border-2 border-neutral-900 uppercase leading-normal  text-neutral-900 transition duration-150 ease-in-out hover:bg-orange-300 hover:bg-opacity-45 focus:outline-none focus:ring-0"
+            className="m-1 h-9 w-9 rounded-full border-2 border-neutral-900 uppercase leading-normal  text-neutral-900 transition duration-150 ease-in-out hover:bg-orange-300 hover:text-white hover:border-white hover:bg-opacity-45 focus:outline-none focus:ring-0"
             data-te-ripple-init
             data-te-ripple-color="light"
           >
@@ -46,7 +46,7 @@ const Footer: React.FC = () => {
             href="https://www.google.com.tr/"
             target="_blank"
             type="button"
-            className="m-1 h-9 w-9 rounded-full border-2 border-neutral-900 uppercase leading-normal  text-neutral-900 transition duration-150 ease-in-out hover:bg-orange-300 hover:bg-opacity-45 focus:outline-none focus:ring-0"
+            className="m-1 h-9 w-9 rounded-full border-2 border-neutral-900 uppercase leading-normal  text-neutral-900 transition duration-150 ease-in-out hover:bg-orange-300 hover:text-white hover:border-white hover:bg-opacity-45 focus:outline-none focus:ring-0"
             data-te-ripple-init
             data-te-ripple-color="light"
           >
@@ -68,7 +68,7 @@ const Footer: React.FC = () => {
             href="https://www.instagram.com/"
             target="_blank"
             type="button"
-            className="m-1 h-9 w-9 rounded-full border-2 border-neutral-900 uppercase leading-normal  text-neutral-900 transition duration-150 ease-in-out hover:bg-orange-300 hover:bg-opacity-45 focus:outline-none focus:ring-0"
+            className="m-1 h-9 w-9 rounded-full border-2 border-neutral-900 uppercase leading-normal  text-neutral-900 transition duration-150 ease-in-out hover:bg-orange-300 hover:text-white hover:border-white hover:bg-opacity-45 focus:outline-none focus:ring-0"
             data-te-ripple-init
             data-te-ripple-color="light"
           >
@@ -86,7 +86,7 @@ const Footer: React.FC = () => {
             href="https://www.linkedin.com/in/erdem-ay/"
             target="_blank"
             type="button"
-            className="m-1 h-9 w-9 rounded-full border-2 border-neutral-900 uppercase leading-normal  text-neutral-900 transition duration-150 ease-in-out hover:bg-orange-300 hover:bg-opacity-45 focus:outline-none focus:ring-0"
+            className="m-1 h-9 w-9 rounded-full border-2 border-neutral-900 uppercase leading-normal  text-neutral-900 transition duration-150 ease-in-out hover:bg-orange-300 hover:text-white hover:border-white hover:bg-opacity-45 focus:outline-none focus:ring-0"
             data-te-ripple-init
             data-te-ripple-color="light"
           >
@@ -104,7 +104,7 @@ const Footer: React.FC = () => {
             href="https://github.com/erdem-ay"
             target="_blank"
             type="button"
-            className="m-1 h-9 w-9 rounded-full border-2 border-neutral-900 uppercase leading-normal  text-neutral-900 transition duration-150 ease-in-out hover:bg-orange-300 hover:bg-opacity-45 focus:outline-none focus:ring-0"
+            className="m-1 h-9 w-9 rounded-full border-2 border-neutral-900 uppercase leading-normal  text-neutral-900 transition duration-150 ease-in-out hover:bg-orange-300 hover:text-white  hover:border-white  hover:bg-opacity-45 focus:outline-none focus:ring-0"
             data-te-ripple-init
             data-te-ripple-color="light"
           >
