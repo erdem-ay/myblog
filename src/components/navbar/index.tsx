@@ -61,18 +61,18 @@ const Navbar: React.FC = () => {
     </div>
   </Link>
   <div className="flex items-center">
-    <ul className="flex items-center space-x-4">
+    <ul className="flex items-center space-x-4  md:mr-0 mr-4">
       <li className="font-semibold text-gray-700">
-        <Link href="about">
+        <Link href="/about">
           <div className="flex items-center">
-            <FaInfoCircle /> <h1 className="ml-2">About</h1>
+            <FaInfoCircle /> <h1 className="ml-2 hidden md:block">About</h1>
           </div>
         </Link>
       </li>
       <li className="font-semibold text-gray-700">
-        <Link href="contact">
+        <Link href="/contact">
           <div className="flex items-center">
-            <FaEnvelope /> <h1 className="ml-2">Contact</h1>
+            <FaEnvelope /> <h1 className="ml-2 hidden md:block">Contact</h1>
           </div>
         </Link>
       </li>
