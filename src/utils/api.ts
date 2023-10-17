@@ -1,12 +1,11 @@
 import { BlogType } from "./types";
 import { RegisterType } from "./types";
-const blogUrl = process.env.BLOG_URL;
-const registerURL = process.env.REGISTER_URL;
+const beUrl= process.env.BE_URL;
 
 
 // GET BLOG
 export const getBlogs = async () => {
-  const response = await fetch(`${blogUrl}`, {
+  const response = await fetch(`${beUrl}blogs`, {
     cache: "no-cache",
   });
   const data = await response.json();
@@ -15,7 +14,7 @@ export const getBlogs = async () => {
 
 // GET USER BLOG
 export const getUsersBlogs = async (userId: string | null) => {
-  const response = await fetch(`${blogUrl}?author=${userId}`, {
+  const response = await fetch(`${beUrl}blogs/?author=${userId}`, {
     cache: "no-cache",
   });
   const data = await response.json();
@@ -26,14 +25,14 @@ export const getUsersBlogs = async (userId: string | null) => {
 
 // DELETE USER BLOG
 export const deleteBlog = async (blogId: string | null) => {
-  const response = await fetch(`${blogUrl}/${blogId}`, { method: 'DELETE' })
+  const response = await fetch(`${beUrl}blogs/${blogId}`, { method: 'DELETE' })
   const data = await response.json();
   
   return data;
 }
 
 export const getBlog = async (blogId: string | null) => {
-  const response = await fetch(`${blogUrl}/${blogId}`, {
+  const response = await fetch(`${beUrl}blogs/${blogId}`, {
     cache: "no-cache",
   });
   const data = await response.json();
@@ -43,7 +42,7 @@ export const getBlog = async (blogId: string | null) => {
 
 // PUT USER BLOG
 export const putBlog = async (blogId: string | null, data: BlogType) => {
-  const response = await fetch(`${blogUrl}/${blogId}`, {
+  const response = await fetch(`${beUrl}blogs/${blogId}`, {
     method: 'PUT',
     body: JSON.stringify(data),
     headers: {
@@ -62,7 +61,7 @@ export const putBlog = async (blogId: string | null, data: BlogType) => {
 
 // POST BLOG
 export const postBlog = async (data: BlogType) => {
-  const response = await fetch(`${blogUrl}`, {
+  const response = await fetch(`${beUrl}blogs`, {
     method: "POST",
     body: JSON.stringify(data),
     headers: {
@@ -80,7 +79,7 @@ export const postBlog = async (data: BlogType) => {
 
 //REGISTER
 export const register = async (data: RegisterType) => {
-  const response = await fetch(`${registerURL}`, {
+  const response = await fetch(`${beUrl}auth/register`, {
     method: "POST",
     body: JSON.stringify(data),
     headers: {

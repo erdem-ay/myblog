@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { toast } from "react-toastify";
 
-let loginUrl = process.env.LOGIN_URL;
+const beUrl= process.env.BE_URL;
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -13,7 +13,7 @@ const Login = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch(`${loginUrl}`, {
+      const response = await fetch(`${beUrl}auth/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
