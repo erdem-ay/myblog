@@ -23,6 +23,7 @@ export const getUsersBlogs = async (userId: string | null) => {
 };
 
 
+
 // DELETE USER BLOG
 export const deleteBlog = async (blogId: string | null) => {
   const response = await fetch(`${blogUrl}/${blogId}`, { method: 'DELETE' })

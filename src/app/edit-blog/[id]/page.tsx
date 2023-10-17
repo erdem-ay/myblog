@@ -19,7 +19,6 @@ if (typeof window !== "undefined") {
 }
 
 const EditBlog = (props: propsTypes) => {
-  const [blog, setBlog] = useState({});
   const [title, setTitle] = useState<string>("");
   const [body, setBody] = useState<string>("");
   const router = useRouter()

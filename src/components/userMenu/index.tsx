@@ -1,5 +1,5 @@
 "use client";
-import { useRef, MouseEvent, useEffect } from "react";
+import { useRef, useEffect } from "react";
 import Link from "next/link";
 import { FaBlog, FaPlus, FaCog, FaSignOutAlt } from "react-icons/fa";
 import { BsFillPersonFill } from "react-icons/bs";
