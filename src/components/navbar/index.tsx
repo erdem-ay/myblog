@@ -25,7 +25,7 @@ const Navbar: React.FC = () => {
   };
 
   return (
-    <nav className="md:px-24 md:py-4 lg:px-24 lg:py-0  flex justify-between  items-center bg-white">
+    <nav className="flex justify-between items-center bg-white md:px-24 md:py-4 lg:px-24 lg:py-0">
       <Link href="/">
         <div className="flex items-center cursor-pointer space-x-2 text-black transition">
           <svg
@@ -59,7 +59,7 @@ const Navbar: React.FC = () => {
         </div>
       </Link>
       <div className="flex items-center">
-        <ul className="flex items-center space-x-4  md:mr-0 mr-4 ">
+        <ul className="flex items-center space-x-4 md:mr-0 mr-4">
           <li className="font-semibold text-gray-700">
             <Link href="/about">
               <div className="flex items-center">
@@ -92,8 +92,8 @@ const Navbar: React.FC = () => {
             ) : (
               <Link href="/login">
                 <div className="flex items-center">
-                  <BsFillPersonFill className="text-orange-400  text-2xl" />
-                  <span className="ml-2 hidden md:block">Login</span>
+                  <BsFillPersonFill className="text-orange-400 text-xl" />
+                  <span className="ml-1 hidden md:block">Login</span>
                 </div>
               </Link>
             )}
