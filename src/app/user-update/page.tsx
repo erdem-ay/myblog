@@ -61,7 +61,10 @@ const UserUpdate = () => {
   };
 
   return (
-    <div className="bg-cover bg-center w-full bg-no-repeat py-12 px-4 sm:px-6 lg:px-8 flex-1 flex justify-center items-center">
+    <div
+      className="bg-cover bg-center w-full bg-no-repeat py-12 px-4 sm:px-6 lg:px-8 flex-1 flex justify-center items-center"
+      style={{ backgroundImage: 'url("https://picsum.photos/1600/900")' }}
+    >
       <div className="w-11/2 bg-white p-8 rounded-lg shadow-md">
         <h1 className="text-2xl font-bold mb-4">User Update</h1>
         <form onSubmit={handleSubmit} className="space-y-4">
@@ -71,7 +74,7 @@ const UserUpdate = () => {
             </label>
             <input
               type="text"
-              id="firstName" 
+              id="firstName"
               value={localFirstName}
               onChange={(e) => setLocalFirstName(e.target.value)}
               className="w-full p-2 border rounded-lg"

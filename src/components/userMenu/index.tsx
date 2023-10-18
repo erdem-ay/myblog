@@ -47,7 +47,7 @@ const UserMenu: React.FC<UserMenuProps> = ({ isOpen, closeMenu }) => {
       {/* <div className="absolute top-0 left-0 w-full h-full  opacity-25"></div> */}
       <div className="absolute top-8 flex flex-col py-4 mx-auto right-0 w-44 bg-gray-300 p-8 rounded-lg shadow-lg">
         <div className="cursor-default flex items-center">
-          <BsFillPersonFill className="text-orange-400" />
+          <BsFillPersonFill className="text-emerald-400" />
           <p className="ml-2">
             {firstName} {lastName}
           </p>

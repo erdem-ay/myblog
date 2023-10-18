@@ -3,7 +3,7 @@ import React from "react";
 const About = () => {
   return (
     <div
-      className="bg-gray-100 py-12 px-4 sm:px-6 lg:px-8 flex-1 flex justify-center items-center"
+      className="bg-cover bg-center w-full bg-no-repeat bg-gray-100 py-12 px-4 sm:px-6 lg:px-8 flex-1 flex justify-center items-center"
       style={{ backgroundImage: `url("https://picsum.photos/1600/900")` }}
     >
       <div className="max-w-3xl mx-auto bg-white p-8 shadow-md rounded-lg">
