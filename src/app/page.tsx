@@ -1,6 +1,5 @@
 import { getBlogs } from "@/utils/api";
 import { BlogType } from "@/utils/types";
-const beUrl= process.env.BE_URL;
 
 export default async function Home() {
   const blogs: BlogType[] = await getBlogs();
