@@ -16,42 +16,38 @@ const Register = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    // E-posta geçerli bir adres mi kontrolü
     const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
     if (!emailRegex.test(email)) {
-      toast.error("Geçerli bir e-posta adresi giriniz.");
+      toast.error("Please enter a valid email address.");
       return;
     }
 
-    // Şifre en az 8 karakter kontrolü
     if (password.length < 8) {
-      toast.error("Şifre en az 8 karakter uzunluğunda olmalıdır.");
+      toast.error("The password must be at least 8 characters long.");
       return;
     }
 
-    // İsim ve soyisim kontrolü
     const nameRegex = /^[A-Za-z]{3,}$/;
     if (!nameRegex.test(firstName) || !nameRegex.test(lastName)) {
-      toast.error("İsim ve soyisim alanları en az iki harf içermelidir ve rakam içeremez.");
+      toast.error("The first name and last name fields must contain at least two letters and cannot contain numbers.");
       return;
     }
 
-    // Şifre ve şifre tekrarı uyuşuyor mu kontrolü
     if (password !== confirmPassword) {
-      toast.error("Şifreler uyuşmuyor. Lütfen tekrar kontrol ediniz.");
+      toast.error("The passwords do not match. Please check again.");
       return;
     }
 
     try {
       const response = await register({ email, password, firstName, lastName });
       if (response.status === "success") {
-        toast.success("Başarıyla kayıt oldunuz.");
+        toast.success("You have successfully registered.");
         router.push("/login");
       } else {
-        toast.error("Bir hata oluştu. Lütfen tekrar deneyiniz.");
+        toast.error("An error occurred. Please try again.");
       }
     } catch (error) {
-      toast.error("Bir hata oluştu. Lütfen daha sonra tekrar deneyiniz.");
+      toast.error("An error occurred. Please try again later.");
     }
   };
 
@@ -122,7 +118,7 @@ const Register = () => {
               type="text"
               id="firstName"
               value={firstName}
-              onChange={(e) => setFirstName(e.target.value.replace(/\d+/g, ""))} // Rakamları kaldırmak için
+              onChange={(e) => setFirstName(e.target.value.replace(/\d+/g, ""))} 
               required
               className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-blue-400"
             />
@@ -138,7 +134,7 @@ const Register = () => {
               type="text"
               id="lastName"
               value={lastName}
-              onChange={(e) => setLastName(e.target.value.replace(/\d+/g, ""))} // Rakamları kaldırmak için
+              onChange={(e) => setLastName(e.target.value.replace(/\d+/g, ""))}
               required
               className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-blue-400"
             />
