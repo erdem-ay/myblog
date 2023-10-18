@@ -65,14 +65,14 @@ const Navbar: React.FC = () => {
       <li className="font-semibold text-gray-700">
         <Link href="/about">
           <div className="flex items-center">
-            <FaInfoCircle /> <span className="ml-2 hidden md:block">About</span>
+            <FaInfoCircle className="text-orange-400 text-2xl" /> <span className="ml-2 hidden md:block">About</span>
           </div>
         </Link>
       </li>
       <li className="font-semibold text-gray-700">
         <Link href="/contact">
           <div className="flex items-center">
-            <FaEnvelope /> <span className="ml-2 hidden md:block">Contact</span>
+            <FaEnvelope className="text-orange-400 text-2xl" /> <span className="ml-2 hidden md:block">Contact</span>
           </div>
         </Link>
       </li>
@@ -82,7 +82,7 @@ const Navbar: React.FC = () => {
             <div className="flex my-auto relative">
               <BsFillPersonFill
                 onClick={toggleMenu}
-                className="text-2xl text-green-500 hover:text-black cursor-pointer"
+                className="text-2xl text-green-500 hover:text-gray-500 cursor-pointer"
               />
               {isMenuOpen && (
                 <UserMenu isOpen={isMenuOpen} closeMenu={toggleMenu} />
@@ -92,7 +92,7 @@ const Navbar: React.FC = () => {
         ) : (
           <Link href="/login">
             <div className="flex items-center space-x-2">
-              <BsFillPersonFill /> <span className="ml-2 hidden md:block font-semibold">Login</span>
+              <BsFillPersonFill className="text-orange-400 text-2xl" /> <span className="ml-2 hidden md:block font-semibold">Login</span>
             </div>
           </Link>
         )}
