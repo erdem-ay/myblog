@@ -1,29 +1,57 @@
-"use client";
-import React, { useState } from "react";
+"use client"
 import Link from "next/link";
+import React, { useState } from "react";
 import { register } from "@/utils/api";
-import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
+import { useRouter } from "next/navigation";
 
 const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const router = useRouter();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    // E-posta geçerli bir adres mi kontrolü
+    const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
+    if (!emailRegex.test(email)) {
+      toast.error("Geçerli bir e-posta adresi giriniz.");
+      return;
+    }
+
+    // Şifre en az 8 karakter kontrolü
+    if (password.length < 8) {
+      toast.error("Şifre en az 8 karakter uzunluğunda olmalıdır.");
+      return;
+    }
+
+    // İsim ve soyisim kontrolü
+    const nameRegex = /^[A-Za-z]{3,}$/;
+    if (!nameRegex.test(firstName) || !nameRegex.test(lastName)) {
+      toast.error("İsim ve soyisim alanları en az iki harf içermelidir ve rakam içeremez.");
+      return;
+    }
+
+    // Şifre ve şifre tekrarı uyuşuyor mu kontrolü
+    if (password !== confirmPassword) {
+      toast.error("Şifreler uyuşmuyor. Lütfen tekrar kontrol ediniz.");
+      return;
+    }
+
     try {
       const response = await register({ email, password, firstName, lastName });
       if (response.status === "success") {
-        toast.success("Blog added successfully");
+        toast.success("Başarıyla kayıt oldunuz.");
         router.push("/login");
       } else {
-        toast.error("Something went wrong. Try again!");
+        toast.error("Bir hata oluştu. Lütfen tekrar deneyiniz.");
       }
     } catch (error) {
-      toast.error("An error occurred. Please try again later.");
+      toast.error("Bir hata oluştu. Lütfen daha sonra tekrar deneyiniz.");
     }
   };
 
@@ -32,7 +60,7 @@ const Register = () => {
       className="bg-cover bg-center w-full bg-no-repeat flex-1 flex justify-center items-center"
       style={{ backgroundImage: 'url("https://picsum.photos/1600/900")' }}
     >
-      <div className="max-w-md w-10/12 mx-auto p-6 bg-white rounded-lg shadow-xl ">
+      <div className="max-w-md w-10/12 mx-auto p-6 bg-white rounded-lg shadow-xl">
         <h2 className="text-2xl font-semibold mb-4">Register</h2>
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
@@ -69,6 +97,22 @@ const Register = () => {
           </div>
           <div className="mb-4">
             <label
+              htmlFor="confirmPassword"
+              className="block text-gray-600 font-medium mb-1"
+            >
+              Confirm Password
+            </label>
+            <input
+              type="password"
+              id="confirmPassword"
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+              required
+              className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-blue-400"
+            />
+          </div>
+          <div className="mb-4">
+            <label
               htmlFor="firstName"
               className="block text-gray-600 font-medium mb-1"
             >
@@ -78,7 +122,7 @@ const Register = () => {
               type="text"
               id="firstName"
               value={firstName}
-              onChange={(e) => setFirstName(e.target.value)}
+              onChange={(e) => setFirstName(e.target.value.replace(/\d+/g, ""))} // Rakamları kaldırmak için
               required
               className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-blue-400"
             />
@@ -94,7 +138,7 @@ const Register = () => {
               type="text"
               id="lastName"
               value={lastName}
-              onChange={(e) => setLastName(e.target.value)}
+              onChange={(e) => setLastName(e.target.value.replace(/\d+/g, ""))} // Rakamları kaldırmak için
               required
               className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-blue-400"
             />
@@ -104,7 +148,7 @@ const Register = () => {
           </p>
           <button
             type="submit"
-            className="w-full py-2 px-4 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition duration-300"
+            className="w-full py-2 px-4 bg-blue-500 text-white rounded-lg hover-bg-blue-600 transition duration-300"
           >
             Register
           </button>
