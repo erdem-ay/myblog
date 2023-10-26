@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import Link from "next/link";
 import React, { useState } from "react";
 import { register } from "@/utils/api";
@@ -29,7 +29,9 @@ const Register = () => {
 
     const nameRegex = /^[A-Za-z]{3,}$/;
     if (!nameRegex.test(firstName) || !nameRegex.test(lastName)) {
-      toast.error("The first name and last name fields must contain at least two letters and cannot contain numbers.");
+      toast.error(
+        "The first name and last name fields must contain at least two letters and cannot contain numbers."
+      );
       return;
     }
 
@@ -40,7 +42,9 @@ const Register = () => {
 
     try {
       const response = await register({ email, password, firstName, lastName });
-      if (response.status === "success") {
+      if ( response.status === "email") {
+        toast.error("This email is already registered. Please use a different email address.");
+      } else if (response.status === "success") {
         toast.success("You have successfully registered.");
         router.push("/login");
       } else {
@@ -59,6 +63,38 @@ const Register = () => {
       <div className="max-w-md w-10/12 mx-auto p-6 bg-white rounded-lg shadow-xl">
         <h2 className="text-2xl font-semibold mb-4">Register</h2>
         <form onSubmit={handleSubmit}>
+          <div className="mb-4">
+            <label
+              htmlFor="firstName"
+              className="block text-gray-600 font-medium mb-1"
+            >
+              First Name
+            </label>
+            <input
+              type="text"
+              id="firstName"
+              value={firstName}
+              onChange={(e) => setFirstName(e.target.value.replace(/\d+/g, ""))}
+              required
+              className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-blue-400"
+            />
+          </div>
+          <div className="mb-4">
+            <label
+              htmlFor="lastName"
+              className="block text-gray-600 font-medium mb-1"
+            >
+              Last Name
+            </label>
+            <input
+              type="text"
+              id="lastName"
+              value={lastName}
+              onChange={(e) => setLastName(e.target.value.replace(/\d+/g, ""))}
+              required
+              className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-blue-400"
+            />
+          </div>
           <div className="mb-4">
             <label
               htmlFor="email"
@@ -107,38 +143,7 @@ const Register = () => {
               className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-blue-400"
             />
           </div>
-          <div className="mb-4">
-            <label
-              htmlFor="firstName"
-              className="block text-gray-600 font-medium mb-1"
-            >
-              First Name
-            </label>
-            <input
-              type="text"
-              id="firstName"
-              value={firstName}
-              onChange={(e) => setFirstName(e.target.value.replace(/\d+/g, ""))} 
-              required
-              className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-blue-400"
-            />
-          </div>
-          <div className="mb-4">
-            <label
-              htmlFor="lastName"
-              className="block text-gray-600 font-medium mb-1"
-            >
-              Last Name
-            </label>
-            <input
-              type="text"
-              id="lastName"
-              value={lastName}
-              onChange={(e) => setLastName(e.target.value.replace(/\d+/g, ""))}
-              required
-              className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-blue-400"
-            />
-          </div>
+
           <p className="flex justify-end p-2">
             <Link href="/login">Click here to login</Link>
           </p>

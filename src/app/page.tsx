@@ -1,8 +1,9 @@
-import { getBlogs } from "@/utils/api";
+import { useStore } from "@/stores";
 import { BlogType } from "@/utils/types";
 
 export default async function Home() {
-  const blogs: BlogType[] = await getBlogs();
+  const { getBlogs } = useStore.getState();
+  const blogs = await getBlogs();
 
   return (
     <div
@@ -10,10 +11,10 @@ export default async function Home() {
       style={{ backgroundImage: 'url("https://picsum.photos/1600/900")' }}
     >
       <div className="max-w-2xl mx-auto w-11/12 my-8 ">
-        {blogs.map((blog, index) => (
+        {blogs.map((blog: BlogType) => (
           <div
             className="flex flex-col border border-gray-700 bg-white p-12 mb-2 rounded-lg"
-            key={index}
+            key={blog._id}
           >
             <h1 className="text-2xl font-bold">{blog.title}</h1>
             <div

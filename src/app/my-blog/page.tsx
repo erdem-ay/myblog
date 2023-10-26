@@ -6,11 +6,13 @@ import { AiOutlineDelete } from "react-icons/ai";
 import { MdModeEdit } from "react-icons/md";
 import Link from "next/link";
 import Loading from "@/components/loading";
+import { useStore } from "@/stores";
 
-const MyBlog = () => {
+const MyBlog = async () => {
   const [blogs, setBlogs] = useState<BlogType[]>([]);
   let id: string | null = "";
   const [isLoading, setIsLoading] = useState(true);
+  const { getUsersBlogs } = useStore.getState();
 
   if (typeof window !== "undefined") {
     id = window.localStorage.getItem("id");
@@ -19,17 +21,17 @@ const MyBlog = () => {
   useEffect(() => {
     const fetchData = async () => {
       setIsLoading(true);
-      try {
-        const _blogs = await getUsersBlogs(id);
-        setBlogs(_blogs);
-      } catch (error) {
-        console.log("Error fetching:", error);
-      }
-      setIsLoading(false);
+      const _blogs = await getUsersBlogs(id);
+      console.log("blogs", _blogs);
+      setBlogs(_blogs)
+      setIsLoading(false)
     };
-
+  
     fetchData();
-  }, [id]);
+  }, []);
+  
+
+
 
   const handleDelete = async (blogId: string) => {
     try {
@@ -64,10 +66,10 @@ const MyBlog = () => {
             </div>
           </div>
         ) : (
-          blogs.map((blog, index) => (
+          blogs.map((blog: any) => (
             <section
               className="flex flex-col border border-gray-700 bg-white p-12 mb-2 rounded-lg relative"
-              key={index}
+              key={blog.id}
             >
               <h1 className="text-2xl font-bold">{blog.title}</h1>
               <div
