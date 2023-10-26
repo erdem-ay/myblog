@@ -2,9 +2,11 @@ import { useStore } from "@/stores";
 import { BlogType } from "@/utils/types";
 
 export default async function Home() {
-  const { getBlogs } = useStore.getState();
+  const { getBlogs, getUser } = useStore.getState();
   const blogs = await getBlogs();
 
+  const user = await getUser();
+  console.log("USER", user);
   return (
     <div
       className="bg-cover bg-center w-full bg-no-repeat flex-1 flex justify-center items-center"

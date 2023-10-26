@@ -2,12 +2,18 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { toast } from "react-toastify";
+import { useStore } from "@/stores";
+import { useRouter } from "next/navigation";
 
 const beUrl= process.env.BE_URL;
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const { updateUser } = useStore.getState();
+  const router = useRouter()
+  
+  
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -26,13 +32,15 @@ const Login = () => {
         const token = data.token;
         const firstName = data.firstName;
         const lastName = data.lastName;
+        updateUser(data);
         const id = data.id;
         localStorage.setItem("token", token);
         localStorage.setItem("firstName", firstName);
         localStorage.setItem("lastName", lastName);
         localStorage.setItem("id", id);
         toast.success(`Hello ${firstName} ${lastName}`);
-        window.location.href = "/";
+        // window.location.href = "/";
+        router.push("/")
       } else {
         toast.error("The email or password you entered is incorrect.");
       }
