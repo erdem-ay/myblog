@@ -1,33 +1,23 @@
 "use client";
 import Editor from "@/components/editor/Editor";
-import { postBlog } from "@/utils/api";
-import React, { useState } from "react";
+import { useStore } from "@/stores";
+import { useRouter } from "next/navigation";
+import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";
-
-let id: string | null = "";
-if (typeof window !== "undefined") {
-  id = window.localStorage.getItem("id");
-}
-
-
-let currentUser: { id: string } ;
-if (id) {
-  currentUser = {id};
-} else {
-  currentUser = { id: "defaultUserId" };
-}
-
 
 const AddBlog: React.FC = () => {
   const [title, setTitle] = useState<string>("");
   const [body, setBody] = useState<string>("");
+  const { postBlog } = useStore.getState();
+  const { user } = useStore();
+  const router = useRouter();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const response = await postBlog({ title, body, author: currentUser.id });
+    const response = await postBlog({ title, body, author: user.id });
     if (response.status === "success") {
       toast.success("Blog added successfully");
-      window.location.href = "/";
+      router.push("/my-blog");
     } else {
       toast.error("Something went wrong. Try again!");
     }
@@ -36,6 +26,12 @@ const AddBlog: React.FC = () => {
   const handleChange = (text: string) => {
     setBody(text);
   };
+
+  useEffect(() => {
+    if (!user?.id) {
+      router.push("/login");
+    }
+  }, []);
 
   return (
     <div
