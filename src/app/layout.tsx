@@ -21,7 +21,7 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <StoreInitializer initialStore={{}}>  {/** */}
+        <StoreInitializer initialStore={{}}> 
           <ToastProvider>
             <div className="flex flex-col min-h-screen">
               <Navbar />

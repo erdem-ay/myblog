@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { createProductsStore } from "./blog";
+import { createBlogStore } from "./blog";
 import { createUserStore } from "./user";
 import { persist, createJSONStorage } from "zustand/middleware";
 
@@ -7,7 +7,7 @@ import { persist, createJSONStorage } from "zustand/middleware";
 export const useStore = create(
   persist(
     (...args) => ({
-      ...createProductsStore(...args),
+      ...createBlogStore(...args),
       ...createUserStore(...args),
       hydrateStore: (data) => {
         const [set] = args;
