@@ -1,11 +1,11 @@
 const beUrl = process.env.BE_URL;
 
 
-export const createBlogStore = (set) => ({
+export const createBlogStore = (set, get) => ({
   blog: {},
   blogs: [],
   getBlogs: async () => {
-    const response = await fetch(`${beUrl}blogs`,{
+    const response = await fetch(`${beUrl}blogs`, {
       cache: "no-cache",
     });
     const blogs = await response.json();
@@ -24,6 +24,7 @@ export const createBlogStore = (set) => ({
   },
 
   postBlog: async (data) => {
+    const { blogs } = get()
     const response = await fetch(`${beUrl}blogs`, {
       method: "POST",
       body: JSON.stringify(data),
@@ -33,6 +34,7 @@ export const createBlogStore = (set) => ({
     });
     if (response.ok) {
       const res = await response.json();
+      set({ blogs: [...blogs, data] });
       return { status: "success", ...res };
     } else {
       return { status: "fail" };
