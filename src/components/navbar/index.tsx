@@ -4,21 +4,21 @@ import Link from "next/link";
 import { FaInfoCircle, FaEnvelope } from "react-icons/fa";
 import { BsFillPersonFill } from "react-icons/bs";
 import UserMenu from "../userMenu/index";
+import { useStore } from "@/stores";
 
-interface AuthToken {
-  token: string | null;
-}
+
 
 const Navbar: React.FC = () => {
-  const [token, setToken] = useState<AuthToken>();
+  const [domLoaded, setDomLoaded] = useState<boolean>();
   const [isMenuOpen, setMenuOpen] = useState(false);
-
+  const { user } = useStore();
+  
   useEffect(() => {
-    const tokenInfo: AuthToken = {
-      token: window.localStorage.getItem("token"),
-    };
-    setToken(tokenInfo);
+    setDomLoaded(true);
   }, []);
+  if(!domLoaded){
+    return null
+  }
 
   const toggleMenu = () => {
     setMenuOpen(!isMenuOpen);
@@ -77,7 +77,7 @@ const Navbar: React.FC = () => {
             </Link>
           </li>
           <li className="font-semibold">
-            {token?.token ? (
+            {user?.firstName ? (
               <div className="flex lg:space-x-4 sm:space-x-2">
                 <div className="flex my-auto relative">
                   <BsFillPersonFill

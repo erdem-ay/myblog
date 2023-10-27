@@ -7,36 +7,34 @@ import { MdModeEdit } from "react-icons/md";
 import Link from "next/link";
 import Loading from "@/components/loading";
 import { useStore } from "@/stores";
+import { useRouter } from "next/navigation";
 
-const MyBlog = async () => {
+const MyBlog = () => {
   const [blogs, setBlogs] = useState<BlogType[]>([]);
-  let id: string | null = "";
   const [isLoading, setIsLoading] = useState(true);
   const { getUsersBlogs } = useStore.getState();
-
-  if (typeof window !== "undefined") {
-    id = window.localStorage.getItem("id");
-  }
+  const { user } = useStore();
+  const router = useRouter()
 
   useEffect(() => {
     const fetchData = async () => {
       setIsLoading(true);
-      const _blogs = await getUsersBlogs(id);
+      const _blogs = await getUsersBlogs(user.id);
       console.log("blogs", _blogs);
-      setBlogs(_blogs)
-      setIsLoading(false)
+      setBlogs(_blogs);
+      setIsLoading(false);
     };
-  
-    fetchData();
+    if (user?.id) {
+      fetchData();
+    }else{
+    router.push("/login")
+    }
   }, []);
-  
-
-
 
   const handleDelete = async (blogId: string) => {
     try {
       await deleteBlog(blogId);
-      const updatedBlogs = await getUsersBlogs(id);
+      const updatedBlogs = await getUsersBlogs(user.id);
       setBlogs(updatedBlogs);
     } catch (error) {
       console.log("Error deleting or updating blogs:", error);
@@ -69,7 +67,7 @@ const MyBlog = async () => {
           blogs.map((blog: any) => (
             <section
               className="flex flex-col border border-gray-700 bg-white p-12 mb-2 rounded-lg relative"
-              key={blog.id}
+              key={blog._id}
             >
               <h1 className="text-2xl font-bold">{blog.title}</h1>
               <div

@@ -3,21 +3,21 @@ import { useRef, useEffect } from "react";
 import Link from "next/link";
 import { FaBlog, FaPlus, FaCog, FaSignOutAlt } from "react-icons/fa";
 import { BsFillPersonFill } from "react-icons/bs";
+import { useStore } from "@/stores";
+import { useRouter } from "next/navigation";
+import { toast } from "react-toastify";
+
 
 interface UserMenuProps {
   isOpen: boolean;
   closeMenu: () => void;
 }
 
-let firstName: string | null = "";
-let lastName: string | null = "";
-if (typeof window !== "undefined") {
-  firstName = window.localStorage.getItem("firstName");
-  lastName = window.localStorage.getItem("lastName");
-}
-
 const UserMenu: React.FC<UserMenuProps> = ({ isOpen, closeMenu }) => {
+  const { deleteUser } = useStore.getState();
   const menuRef = useRef<HTMLDivElement | null>(null);
+  const { user } = useStore();
+  const router = useRouter();
 
   useEffect(() => {
     const handleClickOutside = (event: any) => {
@@ -38,10 +38,11 @@ const UserMenu: React.FC<UserMenuProps> = ({ isOpen, closeMenu }) => {
   }, [isOpen, closeMenu]);
 
   const tokenDelete = () => {
-    localStorage.removeItem("token");
-    window.location.href = "/";
+    deleteUser(); 
+    router.push("/");
+    toast.success("Çıkış başarılı");
   };
-
+  
   return (
     <div ref={menuRef} className={`user-menu ${isOpen ? "open" : ""}`}>
       {/* <div className="absolute top-0 left-0 w-full h-full  opacity-25"></div> */}
@@ -49,22 +50,25 @@ const UserMenu: React.FC<UserMenuProps> = ({ isOpen, closeMenu }) => {
         <div className="cursor-default flex items-center">
           <BsFillPersonFill className="text-emerald-400" />
           <p className="ml-2">
-            {firstName} {lastName}
+            {user.firstName} {user.lastName}
           </p>
         </div>
         <Link href="/my-blog" onClick={closeMenu}>
           <div className="flex items-center">
-            <FaBlog className="text-orange-400" /> <h1 className="ml-2">My Blogs</h1>
+            <FaBlog className="text-orange-400" />{" "}
+            <h1 className="ml-2">My Blogs</h1>
           </div>
         </Link>
         <Link href="/add-blog" onClick={closeMenu}>
           <div className="flex items-center">
-            <FaPlus  className="text-orange-400"/> <h3 className="ml-2">Add Blog</h3>
+            <FaPlus className="text-orange-400" />{" "}
+            <h3 className="ml-2">Add Blog</h3>
           </div>
         </Link>
         <Link href="/settings" onClick={closeMenu}>
           <div className="flex items-center">
-            <FaCog  className="text-orange-400"/> <h3 className="ml-2">Settings</h3>
+            <FaCog className="text-orange-400" />{" "}
+            <h3 className="ml-2">Settings</h3>
           </div>
         </Link>
         <button className="text-red-500 cursor-pointer" onClick={tokenDelete}>

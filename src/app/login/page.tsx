@@ -17,7 +17,6 @@ const Login = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
     try {
       const response = await fetch(`${beUrl}auth/login`, {
         method: "POST",
@@ -26,21 +25,11 @@ const Login = () => {
         },
         body: JSON.stringify({ email, password }),
       });
-
       if (response.ok) {
         const data = await response.json();
-        const token = data.token;
-        const firstName = data.firstName;
-        const lastName = data.lastName;
         updateUser(data);
-        const id = data.id;
-        localStorage.setItem("token", token);
-        localStorage.setItem("firstName", firstName);
-        localStorage.setItem("lastName", lastName);
-        localStorage.setItem("id", id);
-        toast.success(`Hello ${firstName} ${lastName}`);
-        // window.location.href = "/";
-        router.push("/")
+        toast.success(`Hello ${data.firstName} ${data.lastName}`);
+        router.push("/");
       } else {
         toast.error("The email or password you entered is incorrect.");
       }

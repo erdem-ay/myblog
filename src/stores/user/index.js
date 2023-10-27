@@ -11,9 +11,9 @@ export const createUserStore = (set, get) => ({
     //   return products;
     // },
 
-    
+
     updateUser: (userInfo) => {
-        console.log("userınfo",userInfo)
+        console.log("userınfo", userInfo)
         set({ user: userInfo });
         return userInfo
     },
@@ -21,5 +21,12 @@ export const createUserStore = (set, get) => ({
     getUser: () => {
         const { user } = get()
         return user;
-    }
+    },
+
+    deleteUser: () => {
+        set({ user: null });
+        const { user } = get()
+        return user
+    },
+
 });
