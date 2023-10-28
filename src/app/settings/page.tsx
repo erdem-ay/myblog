@@ -2,16 +2,23 @@
 import Link from "next/link";
 import React, { useState, useEffect } from "react";
 import { useStore } from "@/stores";
+import { useRouter } from "next/navigation";
 
 const Setting = () => {
   const [domLoaded, setDomLoaded] = useState<boolean>();
   const { user } = useStore();
+  const router = useRouter()
 
   useEffect(() => {
     setDomLoaded(true);
+    
   }, []);
   if (!domLoaded) {
     return null;
+  }
+
+  if (!user?.id) {
+    router.push("/login")
   }
 
   return (
@@ -25,11 +32,11 @@ const Setting = () => {
           <div className="cursor-default flex flex-col items-center">
             <div className="flex items-center justify-center">
               <label className="block text-lg font-medium">First Name:</label>
-              <p className="font-medium ml-2"> {user.firstName}</p>
+              <p className="font-medium ml-2"> {user?.firstName}</p>
             </div>
             <div className="flex  items-center">
               <label className="block text-lg  font-medium">Last Name:</label>
-              <p className="font-medium ml-2">{user.lastName}</p>
+              <p className="font-medium ml-2">{user?.lastName}</p>
             </div>
             <div className="flex py-4">
               <Link href={`/user-update/`}>

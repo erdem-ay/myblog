@@ -39,6 +39,13 @@ export const createBlogStore = (set, get) => ({
     } else {
       return { status: "fail" };
     }
+  },
+
+  deleteBlog : async (blogId) => {
+    const response = await fetch(`${beUrl}blogs/${blogId}`, { method: 'DELETE' })
+    const data = await response.json();
+    
+    return data;
   }
 
 });

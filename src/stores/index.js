@@ -16,7 +16,8 @@ export const useStore = create(
     }),
     {
       name: 'next-zustand', 
-      storage: createJSONStorage(() => sessionStorage), 
+      // storage: createJSONStorage(() => sessionStorage), 
+      storage: createJSONStorage(() => localStorage),
     }
   )
 );

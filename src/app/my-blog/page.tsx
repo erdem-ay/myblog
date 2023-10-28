@@ -1,6 +1,5 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import { getUsersBlogs, deleteBlog, putBlog } from "@/utils/api";
 import { BlogType } from "@/utils/types";
 import { AiOutlineDelete } from "react-icons/ai";
 import { MdModeEdit } from "react-icons/md";
@@ -15,6 +14,7 @@ const MyBlog = () => {
   const { getUsersBlogs } = useStore.getState();
   const { user } = useStore();
   const router = useRouter()
+  const { deleteBlog } = useStore.getState();
 
   useEffect(() => {
     const fetchData = async () => {
