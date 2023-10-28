@@ -55,6 +55,7 @@ export const createBlogStore = (set, get) => ({
       cache: "no-cache",
     });
     const data = await response.json();
+    set({ blogs });
     return data;
   },
 
