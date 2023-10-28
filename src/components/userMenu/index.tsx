@@ -40,7 +40,10 @@ const UserMenu: React.FC<UserMenuProps> = ({ isOpen, closeMenu }) => {
   const tokenDelete = () => {
     deleteUser(); 
     router.push("/");
-    toast.success("Çıkış başarılı");
+    toast.info("You have been successfully logged out!", {
+      position: "top-center",
+      autoClose: 3000, 
+    });
   };
   
   return (
