@@ -41,55 +41,57 @@ export const createBlogStore = (set, get) => ({
     }
   },
 
-  deleteBlog : async (blogId) => {
+  deleteBlog: async (blogId) => {
     const response = await fetch(`${beUrl}blogs/${blogId}`, { method: 'DELETE' })
     const data = await response.json();
-    
+
     return data;
   },
 
 
-getBlog : async (blogId) => {
-  const response = await fetch(`${beUrl}blogs/${blogId}`, {
-    cache: "no-cache",
-  });
-  const data = await response.json();
-  return data;
-},
+  getBlog: async (blogId) => {
+    const { blogs } = get()
+    const response = await fetch(`${beUrl}blogs/${blogId}`, {
+      cache: "no-cache",
+    });
+    const data = await response.json();
+    set({ blogs: [...blogs, blogId] });
+    return data;
+  },
 
-putBlog : async (blogId, data) => {
-  const { blogs } = get()
-  const response = await fetch(`${beUrl}blogs/${blogId}`, {
-    method: 'PUT',
-    body: JSON.stringify(data),
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  });
+  putBlog: async (blogId, data) => {
+    const { blogs } = get()
+    const response = await fetch(`${beUrl}blogs/${blogId}`, {
+      method: 'PUT',
+      body: JSON.stringify(data),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
 
-  if (response.ok) {
-    const res = await response.json();
-    set({ blogs: [...blogs, data] });
-    return { status: 'success', ...res };
-  } else {
-    return { status: 'fail' };
+    if (response.ok) {
+      const res = await response.json();
+      set({ blogs: [...blogs, blogId, data] });
+      return { status: 'success', ...res };
+    } else {
+      return { status: 'fail' };
+    }
+  },
+
+  register: async (data) => {
+    const response = await fetch(`${beUrl}auth/register`, {
+      method: "POST",
+      body: JSON.stringify(data),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    if (response.ok) {
+      const res = await response.json();
+      return { status: "success", ...res };
+    } else {
+      return { status: "fail" };
+    }
   }
-},
-
-register : async (data) => {
-  const response = await fetch(`${beUrl}auth/register`, {
-    method: "POST",
-    body: JSON.stringify(data),
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
-  if (response.ok) {
-    const res = await response.json();
-    return { status: "success", ...res };
-  } else {
-    return { status: "fail" };
-  }
-}
 
 });
