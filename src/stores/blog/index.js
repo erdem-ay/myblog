@@ -55,7 +55,6 @@ export const createBlogStore = (set, get) => ({
       cache: "no-cache",
     });
     const data = await response.json();
-    set({ blogs: [...blogs, blogId] });
     return data;
   },
 
@@ -76,6 +75,8 @@ export const createBlogStore = (set, get) => ({
     } else {
       return { status: 'fail' };
     }
+
+  
   },
 
   register: async (data) => {
