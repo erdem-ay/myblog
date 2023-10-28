@@ -58,6 +58,7 @@ getBlog : async (blogId) => {
 },
 
 putBlog : async (blogId, data) => {
+  const { blogs } = get()
   const response = await fetch(`${beUrl}blogs/${blogId}`, {
     method: 'PUT',
     body: JSON.stringify(data),
@@ -66,9 +67,9 @@ putBlog : async (blogId, data) => {
     },
   });
 
-
   if (response.ok) {
     const res = await response.json();
+    set({ blogs: [...blogs, data] });
     return { status: 'success', ...res };
   } else {
     return { status: 'fail' };
