@@ -46,6 +46,33 @@ export const createBlogStore = (set, get) => ({
     const data = await response.json();
     
     return data;
+  },
+
+
+getBlog : async (blogId) => {
+  const response = await fetch(`${beUrl}blogs/${blogId}`, {
+    cache: "no-cache",
+  });
+  const data = await response.json();
+  return data;
+},
+
+putBlog : async (blogId, data) => {
+  const response = await fetch(`${beUrl}blogs/${blogId}`, {
+    method: 'PUT',
+    body: JSON.stringify(data),
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
+
+
+  if (response.ok) {
+    const res = await response.json();
+    return { status: 'success', ...res };
+  } else {
+    return { status: 'fail' };
   }
+}
 
 });

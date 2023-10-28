@@ -1,10 +1,9 @@
 "use client";
 import Editor from "@/components/editor/Editor";
-import { getBlog } from "@/utils/api";
 import React, { useEffect, useState } from "react";
-import { putBlog } from "@/utils/api";
 import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
+import { useStore } from "@/stores";
 
 type propsTypes = {
   params: {
@@ -12,21 +11,15 @@ type propsTypes = {
   };
 };
 
-let id: string | null = "";
-
-if (typeof window !== "undefined") {
-  id = window.localStorage.getItem("id");
-}
-
 const EditBlog = (props: propsTypes) => {
   const [title, setTitle] = useState<string>("");
   const [body, setBody] = useState<string>("");
-  const router = useRouter()
-  console.log(body);
-  console.log(id);
+  const router = useRouter();
+  const { user } = useStore();
+  const { getBlog,putBlog } = useStore.getState();
 
   useEffect(() => {
-    getBlog(props.params.id).then((response) => {
+    getBlog(props.params.id).then((response: any) => {
       console.log(response);
       setTitle(response.title);
       setBody(response.body);
@@ -38,12 +31,12 @@ const EditBlog = (props: propsTypes) => {
     const response = await putBlog(props.params.id, {
       title,
       body,
-      author : id as string ,
+      author: user.id as string,
     });
     if (response.status === "success") {
       toast.success("Changes saved");
       // window.location.href = "/my-blog";
-      router.push("/my-blog")
+      router.push("/my-blog");
     } else {
       toast.error("Something went wrong. Try again!");
     }
@@ -52,6 +45,10 @@ const EditBlog = (props: propsTypes) => {
   const handleChange = (text: string) => {
     setBody(text);
   };
+
+  if (!user?.id) {
+    router.push("/login");
+  }
 
   return (
     <div

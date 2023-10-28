@@ -1,12 +1,15 @@
 "use client";
 import { useRouter } from "next/navigation";
 import React, { useState, useEffect } from "react";
+import { useStore } from "@/stores";
 
 const UserUpdate = () => {
   const [localFirstName, setLocalFirstName] = useState<string>("");
   const [localLastName, setLocalLastName] = useState<string>("");
   const [token, setToken] = useState<string | null>("");
+  const {user} = useStore()
   const router = useRouter();
+
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -27,6 +30,11 @@ const UserUpdate = () => {
       }
     }
   }, []);
+
+
+  if (!user?.id) {
+    router.push("/login");
+  }
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
