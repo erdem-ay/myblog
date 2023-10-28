@@ -1,9 +1,9 @@
 "use client";
 import Link from "next/link";
 import React, { useState } from "react";
-import { register } from "@/utils/api";
 import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
+import { useStore } from "@/stores";
 
 const Register = () => {
   const [email, setEmail] = useState("");
@@ -12,6 +12,7 @@ const Register = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const router = useRouter();
+  const { register } = useStore.getState();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();

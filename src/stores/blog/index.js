@@ -73,6 +73,22 @@ putBlog : async (blogId, data) => {
   } else {
     return { status: 'fail' };
   }
+},
+
+register : async (data) => {
+  const response = await fetch(`${beUrl}auth/register`, {
+    method: "POST",
+    body: JSON.stringify(data),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+  if (response.ok) {
+    const res = await response.json();
+    return { status: "success", ...res };
+  } else {
+    return { status: "fail" };
+  }
 }
 
 });
