@@ -31,11 +31,10 @@ const EditBlog = (props: propsTypes) => {
     const response = await putBlog(props.params.id, {
       title,
       body,
-      author: user.id as string,
+      author: user.id,
     });
     if (response.status === "success") {
       toast.success("Changes saved");
-      // window.location.href = "/my-blog";
       router.push("/my-blog");
     } else {
       toast.error("Something went wrong. Try again!");
