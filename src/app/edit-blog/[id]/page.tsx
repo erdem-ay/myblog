@@ -17,6 +17,7 @@ const EditBlog = (props: propsTypes) => {
   const router = useRouter();
   const { user } = useStore();
   const { getBlog,putBlog } = useStore.getState();
+console.log("EditBlogsSafyası")
 
   useEffect(() => {
     getBlog(props.params.id).then((response: any) => {
