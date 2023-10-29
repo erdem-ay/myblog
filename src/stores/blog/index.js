@@ -60,24 +60,26 @@ export const createBlogStore = (set, get) => ({
   },
 
   putBlog: async (blogId, data) => {
+    console.log(data,blogId)
     const { blogs } = get()
+    console.log("blogs",blogs)
     const response = await fetch(`${beUrl}blogs/${blogId}`, {
       method: 'PUT',
       body: JSON.stringify(data),
       headers: {
         'Content-Type': 'application/json',
       },
+      
     });
 
+    console.log("response",response)
     if (response.ok) {
       const res = await response.json();
-      set({ blogs: [...blogs, blogId, data] });
+      set({ blogs: [...blogs, data] });
       return { status: 'success', ...res };
     } else {
       return { status: 'fail' };
     }
-
-  
   },
 
   register: async (data) => {
