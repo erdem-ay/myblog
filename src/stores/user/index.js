@@ -5,7 +5,6 @@ export const createUserStore = (set, get) => ({
     user: {},
 
     updateUser: (userInfo) => {
-        console.log("userınfo", userInfo)
         set({ user: userInfo });
         return userInfo
     },
@@ -23,7 +22,6 @@ export const createUserStore = (set, get) => ({
 
     postUpdatedUser:async (data) =>  {
         const { user } = get()
-        console.log("postUpdatedUser", data)
         try {
             await fetch(`${beUrl}user/update`, {
               method: "POST",

@@ -17,7 +17,6 @@ const EditBlog = (props: propsTypes) => {
   const router = useRouter();
   const { user } = useStore();
   const { getBlog,putBlog } = useStore.getState();
-console.log("EditBlogsSafyası")
 
   useEffect(() => {
     getBlog(props.params.id).then((response: any) => {
@@ -29,7 +28,6 @@ console.log("EditBlogsSafyası")
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     let data = {title,body,author:user.id}
-    console.log("data",data)
     const response = await putBlog(props.params.id, data);
     if (response.status === "success") {
       toast.success("Changes saved");

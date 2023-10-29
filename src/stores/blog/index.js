@@ -9,7 +9,6 @@ export const createBlogStore = (set, get) => ({
       cache: "no-cache",
     });
     const blogs = await response.json();
-    console.log(blogs)
     set({ blogs });
 
     return blogs;
@@ -60,10 +59,7 @@ export const createBlogStore = (set, get) => ({
   },
 
   putBlog: async (blogId, data) => {
-    console.log("blogStoreData",data)
     const { blogs } = get()
-    console.log("blogStoreBlog",blogs)
-    console.log("blogStoreBlogId",blogId)
     const response = await fetch(`${beUrl}blogs/${blogId}`, {
       method: 'PUT',
       body: JSON.stringify(data),
@@ -73,7 +69,6 @@ export const createBlogStore = (set, get) => ({
       
     });
 
-    console.log("response",response)
     if (response.ok) {
       const res = await response.json();
       set({ blogs: [...blogs, data] });

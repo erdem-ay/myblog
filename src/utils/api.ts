@@ -68,7 +68,6 @@ export const postBlog = async (data: BlogType) => {
       "Content-Type": "application/json",
     },
   });
-  console.log(response);
   if (response.ok) {
     const res = await response.json();
     return { status: "success", ...res };

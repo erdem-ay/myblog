@@ -12,7 +12,6 @@ const UserUpdate = () => {
   const { postUpdatedUser } = useStore.getState();
 
  
-  console.log(user);
 
   useEffect(() => {
     setFirstName(user.firstName);
@@ -33,7 +32,6 @@ const UserUpdate = () => {
 
     try {
       postUpdatedUser(data);
-      console.log("data", data);
       router.push("/settings");
     } catch (error) {
       console.log(error);

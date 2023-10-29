@@ -20,7 +20,6 @@ const MyBlog = () => {
     const fetchData = async () => {
       setIsLoading(true);
       const _blogs = await getUsersBlogs(user.id);
-      console.log("blogs", _blogs);
       setBlogs(_blogs);
       setIsLoading(false);
     };
