@@ -21,4 +21,25 @@ export const createUserStore = (set, get) => ({
         return user
     },
 
+    postUpdatedUser:async (data) =>  {
+        const { user } = get()
+        console.log("postUpdatedUser", data)
+        try {
+            await fetch(`${beUrl}user/update`, {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(data),
+            })
+              .then((response) => response.json())
+              .then((data) => {
+                set({ user: {...user, firstName:data.firstName,lastName:data.lastName} });
+              });
+          } catch (error) {
+            console.error(error);
+          }
+    }
+    
+
 });
