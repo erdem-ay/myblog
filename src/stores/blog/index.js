@@ -60,9 +60,10 @@ export const createBlogStore = (set, get) => ({
   },
 
   putBlog: async (blogId, data) => {
-    console.log(data,blogId)
+    console.log("blogStoreData",data)
     const { blogs } = get()
-    console.log("blogs",blogs)
+    console.log("blogStoreBlog",blogs)
+    console.log("blogStoreBlogId",blogId)
     const response = await fetch(`${beUrl}blogs/${blogId}`, {
       method: 'PUT',
       body: JSON.stringify(data),
