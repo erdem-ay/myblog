@@ -28,10 +28,16 @@ const Login = () => {
       if (response.ok) {
         const data = await response.json();
         updateUser(data);
-        toast.success(`Hello ${data.firstName} ${data.lastName}`);
+        toast.success(`Hello ${data.firstName} ${data.lastName}`, {
+          position: "top-center",
+          autoClose: 3000, 
+        });
         router.push("/");
       } else {
-        toast.error("The email or password you entered is incorrect.");
+        toast.error("The email or password you entered is incorrect.", {
+          position: "top-center",
+          autoClose: 3000, 
+        });
       }
     } catch (error) {
       console.error("Hata:", error);

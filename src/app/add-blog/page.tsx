@@ -16,10 +16,16 @@ const AddBlog: React.FC = () => {
     e.preventDefault();
     const response = await postBlog({ title, body, author: user.id });
     if (response.status === "success") {
-      toast.success("Blog added successfully");
+      toast.success("Blog added successfully", {
+        position: "top-center",
+        autoClose: 3000, 
+      });
       router.push("/my-blog");
     } else {
-      toast.error("Something went wrong. Try again!");
+      toast.error("Something went wrong. Try again!", {
+        position: "top-center",
+        autoClose: 3000, 
+      });
     }
   };
 

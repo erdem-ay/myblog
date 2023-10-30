@@ -30,10 +30,16 @@ const EditBlog = (props: propsTypes) => {
     let data = {title,body,author:user.id}
     const response = await putBlog(props.params.id, data);
     if (response.status === "success") {
-      toast.success("Changes saved");
+      toast.success("Changes saved", {
+        position: "top-center",
+        autoClose: 3000, 
+      });
       router.push("/my-blog");
     } else {
-      toast.error("Something went wrong. Try again!");
+      toast.error("Something went wrong. Try again!", {
+        position: "top-center",
+        autoClose: 3000, 
+      });
     }
   };
 

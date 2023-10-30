@@ -19,40 +19,64 @@ const Register = () => {
 
     const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
     if (!emailRegex.test(email)) {
-      toast.error("Please enter a valid email address.");
+      toast.error("Please enter a valid email address.", {
+        position: "top-center",
+        autoClose: 3000, 
+      });
       return;
     }
 
     if (password.length < 8) {
-      toast.error("The password must be at least 8 characters long.");
+      toast.error("The password must be at least 8 characters long.", {
+        position: "top-center",
+        autoClose: 3000, 
+      });
       return;
     }
 
     const nameRegex = /^[A-Za-z]{3,}$/;
     if (!nameRegex.test(firstName) || !nameRegex.test(lastName)) {
       toast.error(
-        "The first name and last name fields must contain at least two letters and cannot contain numbers."
+        "The first name and last name fields must contain at least two letters and cannot contain numbers.", {
+          position: "top-center",
+          autoClose: 3000, 
+        }
       );
       return;
     }
 
     if (password !== confirmPassword) {
-      toast.error("The passwords do not match. Please check again.");
+      toast.error("The passwords do not match. Please check again.", {
+        position: "top-center",
+        autoClose: 3000, 
+      });
       return;
     }
 
     try {
       const response = await register({ email, password, firstName, lastName });
       if ( response.status === "email") {
-        toast.error("This email is already registered. Please use a different email address.");
+        toast.error("This email is already registered. Please use a different email address.", {
+          position: "top-center",
+          autoClose: 3000, 
+        });
       } else if (response.status === "success") {
-        toast.success("You have successfully registered.");
+        toast.success("You have successfully registered.", {
+          position: "top-center",
+          autoClose: 3000, 
+        });
         router.push("/login");
       } else {
-        toast.error("An error occurred. Please try again.");
+        toast.error("An error occurred. Please try again.", {
+          position: "top-center",
+          autoClose: 3000, 
+        });
       }
     } catch (error) {
-      toast.error("An error occurred. Please try again later.");
+      toast.error("An error occurred. Please try again later.", {
+        position: "top-center",
+        autoClose: 3000, 
+      });
     }
   };
 

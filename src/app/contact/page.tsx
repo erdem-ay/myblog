@@ -13,10 +13,16 @@ const Contact = () => {
     e.preventDefault();
 
     if (name.trim() === "" || email.trim() === "" || message.trim() === "") {
-      toast.error("Please fill in all fields.");
+      toast.error("Please fill in all fields.", {
+        position: "top-center",
+        autoClose: 3000, 
+      });
     } else {
       toast.success(
-        "Your message has been sent to our team. Thank you for your interest."
+        "Your message has been sent to our team. Thank you for your interest.", {
+          position: "top-center",
+          autoClose: 3000, 
+        }
       );
       router.push("/");
 
