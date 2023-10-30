@@ -4,6 +4,7 @@ import Link from "next/link";
 import { toast } from "react-toastify";
 import { useStore } from "@/stores";
 import { useRouter } from "next/navigation";
+import { FaHandPaper} from "react-icons/fa"
 
 const beUrl= process.env.BE_URL;
 
@@ -28,10 +29,15 @@ const Login = () => {
       if (response.ok) {
         const data = await response.json();
         updateUser(data);
-        toast.success(`Hello ${data.firstName} ${data.lastName}`, {
-          position: "top-center",
-          autoClose: 3000, 
-        });
+        toast.success(
+          <p className="flex">
+            Hello {data.firstName} {data.lastName} <FaHandPaper className="text-yellow-600 my-auto ml-2" />
+          </p>,
+          {
+            position: "top-center",
+            autoClose: 3000,
+          }
+        );
         router.push("/");
       } else {
         toast.error("The email or password you entered is incorrect.", {
