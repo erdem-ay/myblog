@@ -1,23 +1,23 @@
 "use client";
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { FaInfoCircle, FaEnvelope } from "react-icons/fa";
-import { BsFillPersonFill } from "react-icons/bs";
+import { RiTwitterXLine } from "react-icons/ri";
+import { ImGithub } from "react-icons/im";
+import { IoLogoYoutube } from "react-icons/io";
+import { BsFacebook, BsFillPersonFill, BsLinkedin } from "react-icons/bs";
 import UserMenu from "../userMenu/index";
 import { useStore } from "@/stores";
-
-
 
 const Navbar: React.FC = () => {
   const [domLoaded, setDomLoaded] = useState<boolean>();
   const [isMenuOpen, setMenuOpen] = useState(false);
   const { user } = useStore();
-  
+
   useEffect(() => {
     setDomLoaded(true);
   }, []);
-  if(!domLoaded){
-    return null
+  if (!domLoaded) {
+    return null;
   }
 
   const toggleMenu = () => {
@@ -25,80 +25,83 @@ const Navbar: React.FC = () => {
   };
 
   return (
-    <nav className="flex justify-between items-center bg-white md:px-24 md:py-4 lg:px-24 lg:py-0">
+    <nav className="flex justify-between items-center w-1440 h-[80px] bg-black bg-opacity-20">
       <Link href="/">
-        <div className="flex items-center cursor-pointer space-x-2 text-black transition">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="100"
-            height="65"
-            viewBox="0 0 100 100"
-          >
-            <circle cx="50" cy="50" r="40" fill="#f39c12" />
-            <text
-              x="50%"
-              y="50%"
-              textAnchor="middle"
-              dy=".0em"
-              fontSize="32"
-              fill="#fff"
-            >
-              WY
-            </text>
-            <text
-              x="50%"
-              y="65%"
-              textAnchor="middle"
-              dy=".4em"
-              fontSize="20"
-              fill="#fff"
-            >
-              Blog
-            </text>
-          </svg>
+        <div className="relative font-spartan text-[20px] font-semibold leading-[22px] tracking-0 text-left bg-F8F9FA">
+          <text className="w-[69px] h-[22px] mt-[29px] ml-[70px] text-white font-extrabold">WY BLOG</text>
         </div>
       </Link>
-      <div className="flex items-center">
-        <ul className="flex items-center space-x-4 md:mr-0 mr-4">
-          <li className="font-semibold text-gray-700">
-            <Link href="/about">
-              <div className="flex items-center">
-                <FaInfoCircle className="text-orange-400 text-xl" />{" "}
-                <span className="ml-2 hidden md:block">About</span>
-              </div>
-            </Link>
-          </li>
-          <li className="font-semibold text-gray-700">
-            <Link href="/contact">
-              <div className="flex items-center">
-                <FaEnvelope className="text-orange-400 text-xl" />{" "}
-                <span className="ml-2 hidden md:block">Contact</span>
-              </div>
-            </Link>
-          </li>
-          <li className="font-semibold">
-            {user?.firstName ? (
-              <div className="flex lg:space-x-4 sm:space-x-2">
-                <div className="flex my-auto relative">
-                  <BsFillPersonFill
-                    onClick={toggleMenu}
-                    className="text-2xl text-emerald-400 hover:text-orange-300 cursor-pointer"
-                  />
-                  {isMenuOpen && (
-                    <UserMenu isOpen={isMenuOpen} closeMenu={toggleMenu} />
-                  )}
-                </div>
-              </div>
-            ) : (
-              <Link href="/login">
-                <div className="flex items-center">
-                  <BsFillPersonFill className="text-orange-400 text-xl" />
-                  <span className="ml-1 hidden md:block">Login</span>
-                </div>
+      <div className="flex">
+        <div className="flex items-center">
+          <ul className="flex items-center ">
+            <li className="flex ml-4">
+              <Link href="/">
+                <text className="font-semibold hidden md:block text-white">Home</text>
               </Link>
-            )}
-          </li>
-        </ul>
+            </li>
+            <li className="flex ml-4">
+              <Link href="/about">
+                <text className="font-semibold hidden md:block text-white">About</text>
+              </Link>
+            </li>
+            <li className="flex ml-4">
+              <Link href="/contact">
+                <p className="font-semibold hidden md:block text-white">Contact Us</p>
+              </Link>
+            </li>
+            <li className="flex ml-4">
+              {user?.firstName ? (
+                <div className="flex lg:space-x-4 sm:space-x-2">
+                  <div className="flex my-auto relative">
+                    <BsFillPersonFill
+                      onClick={toggleMenu}
+                      className="text-2xl text-emerald-600 hover:text-white cursor-pointer "
+                    />
+                    {isMenuOpen && (
+                      <UserMenu isOpen={isMenuOpen} closeMenu={toggleMenu} />
+                    )}
+                  </div>
+                </div>
+              ) : (
+                <Link href="/login">
+                  <div className="flex items-center">
+                    <span className="font-semibold hidden md:block text-white">Login</span>
+                  </div>
+                </Link>
+              )}
+            </li>
+          </ul>
+        </div>
+        <div className="h-8 ml-4 border-[1px] border-white"/>
+        <div className="flex items-center mr-16">
+          <ul className="flex items-center">
+            <li className="flex ml-4">
+              <Link href="https://www.facebook.com/" target="_blank">
+                <BsFacebook className="text-white" />
+              </Link>
+            </li>
+            <li className="flex ml-4">
+              <Link href="https://twitter.com/"target="_blank" >
+                <RiTwitterXLine className="text-white" />
+              </Link>
+            </li>
+            <li className="flex ml-4">
+              <Link href="https://www.youtube.com/"  target="_blank">
+                <IoLogoYoutube className="text-white" />
+              </Link>
+            </li>
+            <li className="flex ml-4">
+              <Link href="https://www.linkedin.com/in/erdem-ay/"  target="_blank">
+                <BsLinkedin className="text-white"/>
+              </Link>
+            </li>
+            <li className="flex ml-4">
+              <Link href="https://github.com/erdem-ay" target="_blank">
+                <ImGithub className="text-white" />
+              </Link>
+            </li>
+          </ul>
+        </div>
       </div>
     </nav>
   );

@@ -4,7 +4,9 @@ import { createUserStore } from "./user";
 import { persist, createJSONStorage } from "zustand/middleware";
 
 
+
 export const useStore = create(
+
   persist(
     (...args) => ({
       ...createBlogStore(...args),
@@ -15,9 +17,9 @@ export const useStore = create(
       },
     }),
     {
-      name: 'next-zustand', 
-      // storage: createJSONStorage(() => sessionStorage), 
-      storage: createJSONStorage(() => localStorage),
+      name: 'blogStorage',
+      storage: createJSONStorage(() => sessionStorage), 
+      // storage: createJSONStorage(() => localStorage),
     }
   )
 );
