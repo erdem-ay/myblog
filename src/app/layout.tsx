@@ -3,6 +3,7 @@ import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import Footer from "@/components/footer";
+import SubFooter from "@/components/subFooter";
 import ToastProvider from "@/utils/toast.provider";
 import { StoreInitializer } from "../stores/initializer";
 
@@ -32,6 +33,7 @@ export default async function RootLayout({
               <Navbar />
               <div className="flex-1 flex flex-col ">{children}</div>
               <Footer />
+              <SubFooter />
             </div>
           </ToastProvider>
         </StoreInitializer>

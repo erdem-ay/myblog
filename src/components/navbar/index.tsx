@@ -4,6 +4,10 @@ import Link from "next/link";
 import { RiTwitterXLine } from "react-icons/ri";
 import { ImGithub } from "react-icons/im";
 import { IoLogoYoutube } from "react-icons/io";
+import { AiFillHome } from 'react-icons/ai';
+import { AiFillInfoCircle } from 'react-icons/ai';
+import { AiFillContacts } from 'react-icons/ai';
+import { RiLoginCircleFill } from 'react-icons/ri';
 import { BsFacebook, BsFillPersonFill, BsLinkedin } from "react-icons/bs";
 import UserMenu from "../userMenu/index";
 import { useStore } from "@/stores";
@@ -37,16 +41,19 @@ const Navbar: React.FC = () => {
             <li className="flex ml-4">
               <Link href="/">
                 <text className="font-semibold hidden md:block text-white">Home</text>
+                <AiFillHome  className="text-white md:hidden"/>
               </Link>
             </li>
             <li className="flex ml-4">
               <Link href="/about">
                 <text className="font-semibold hidden md:block text-white">About</text>
+                <AiFillInfoCircle className="text-white md:hidden" />
               </Link>
             </li>
             <li className="flex ml-4">
               <Link href="/contact">
                 <p className="font-semibold hidden md:block text-white">Contact Us</p>
+                <AiFillContacts className="text-white md:hidden"/>
               </Link>
             </li>
             <li className="flex ml-4">
@@ -66,14 +73,15 @@ const Navbar: React.FC = () => {
                 <Link href="/login">
                   <div className="flex items-center">
                     <span className="font-semibold hidden md:block text-white">Login</span>
+                    <RiLoginCircleFill className="text-white md:hidden"/>
                   </div>
                 </Link>
               )}
             </li>
           </ul>
         </div>
-        <div className="h-8 ml-4 border-[1px] border-white"/>
-        <div className="flex items-center mr-16">
+        <div className="h-8 ml-4 border-[1px] border-white hidden md:block"/>
+        <div className="md:flex items-center mr-16 hidden md:block">
           <ul className="flex items-center">
             <li className="flex ml-4">
               <Link href="https://www.facebook.com/" target="_blank">
