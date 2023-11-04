@@ -1,75 +1,99 @@
-import Link from "next/link";
 import React from "react";
+import { BsFacebook } from "react-icons/bs";
 import { RiTwitterXLine } from "react-icons/ri";
 import { IoLogoYoutube } from "react-icons/io";
-import { BsFacebook, BsPinterest } from "react-icons/bs";
-import { AiFillBehanceCircle } from "react-icons/ai";
+import { FaPinterest } from "react-icons/fa";
+import { FaBehanceSquare } from "react-icons/fa";
+
+
 
 const Footer: React.FC = () => {
   return (
-    <footer className="flex flex-col  bg-gray-500 text-center text-neutral-900 relative">
-      <div className="flex flex-col md:flex-row h-72 pt-16 justify-evenly text-white">
-        <div className="flex-1">
-          <h2 className="font-lora text-xl font-semibold leading-25 tracking-0 text-left">
-            Contact the Publisher
-          </h2>
-          <p className="pt-4 font-Lora text-sm font-normal leading-15 tracking-0 text-left">
-            erdem_ay@yahoo.com
-          </p>
-          <p className="pt-2 font-Lora text-sm font-normal leading-15 tracking-0 text-left">
-            +422 674 1232 131
-          </p>
-        </div>
-        <div className="flex-1">
-          <h2 className="font-lora text-xl font-semibold leading-25 tracking-0 text-left">
-            Explorate
-          </h2>
-          <p className="pt-4 font-Lora text-sm font-normal leading-15 tracking-0 text-left">
-            About{" "}
-          </p>
-          <p className="pt-2 font-Lora text-sm font-normal leading-15 tracking-0 text-left">
-            Partners{" "}
-          </p>
-          <p className="pt-2 font-Lora text-sm font-normal leading-15 tracking-0 text-left">
-            Job Opportunities
-          </p>
-          <p className="pt-2 font-Lora text-sm font-normal leading-15 tracking-0 text-left">
-            Advertise
-          </p>
-          <p className="pt-2 font-Lora text-sm font-normal leading-15 tracking-0 text-left">
-            Membership
-          </p>
-        </div>
-        <div className="flex-1">
-          <h2 className="font-lora text-xl font-semibold leading-25 tracking-0 text-left">
-            Headquarter
-          </h2>
-          <p className="pt-4 font-Lora text-sm font-normal leading-15 tracking-0 text-left">
-            191 Middleville Road,
-            <br /> NY 1001, Sydney <br />
-            Australia
-          </p>
-        </div>
-        <div className="flex-1">
-          <h2 className="font-lora text-xl font-semibold leading-25 tracking-0 text-left">
-            Connections
-          </h2>
-          <div className="flex pt-4 text-white justify-around space-x-8">
-            <Link href="https://www.facebook.com/" target="_blank">
-              <BsFacebook />
-            </Link>
-            <Link href="https://twitter.com/"target="_blank" >
-              <RiTwitterXLine />
-            </Link>
-            <Link href="https://www.youtube.com/"  target="_blank">
-              <IoLogoYoutube />
-            </Link>
-            <Link href="https://tr.pinterest.com/"  target="_blank">
-              <BsPinterest />
-            </Link>
-            <Link href="https://www.behance.net/" target="_blank">
-              <AiFillBehanceCircle />
-            </Link>
+    <footer className="bg-white dark:bg-gray-800">
+      <div className="mx-auto w-full max-w-screen-xl">
+        <div className="grid grid-cols-2 gap-8 px-4 py-6 lg:py-8 md:grid-cols-4">
+          <div>
+            <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
+              Contact the Publisher
+            </h2>
+            <ul className="text-gray-500 dark:text-gray-400 font-medium">
+              <li className="mb-4">
+                <a href="#" className=" hover:underline">
+                  erdem_ay@yahoo.com
+                </a>
+              </li>
+              <li className="mb-4">
+                <a href="#" className="hover:underline">
+                  +944 450 904 505
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
+              Explorate
+            </h2>
+            <ul className="text-gray-500 dark:text-gray-400 font-medium">
+              <li className="mb-4">
+                <a href="#" className="hover:underline">
+                  About
+                </a>
+              </li>
+              <li className="mb-4">
+                <a href="#" className="hover:underline">
+                  Partners
+                </a>
+              </li>
+              <li className="mb-4">
+                <a href="#" className="hover:underline">
+                  Job Opportunities
+                </a>
+              </li>
+              <li className="mb-4">
+                <a href="#" className="hover:underline">
+                  Advertise
+                </a>
+              </li>
+              <li className="mb-4">
+                <a href="#" className="hover:underline">
+                  Membership
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
+              Headquarter
+            </h2>
+            <ul className="text-gray-500 dark:text-gray-400 font-medium">
+              <li className="mb-4">
+                <a href="#" className="hover:underline">
+                  191 Middleville Road, NY 1001, Sydney Australia
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
+              Connections
+            </h2>
+            <ul className="text-gray-500 dark:text-gray-400 font-medium flex">
+              <li className="">
+                <BsFacebook />
+              </li>
+              <li className="ml-4">
+                <RiTwitterXLine />
+              </li>
+              <li className="ml-4">
+             < IoLogoYoutube/>
+              </li>
+              <li className="ml-4">
+              <FaPinterest/>
+              </li>
+              <li className="ml-4">
+           <FaBehanceSquare/>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
