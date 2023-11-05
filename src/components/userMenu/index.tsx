@@ -52,7 +52,7 @@ const UserMenu: React.FC<UserMenuProps> = ({ isOpen, closeMenu }) => {
   return (
     <div ref={menuRef} className={`user-menu ${isOpen ? "open" : ""}`}>
       {/* <div className="absolute top-0 left-0 w-full h-full  opacity-25"></div> */}
-      <div className="absolute top-8 flex flex-col py-4 mx-auto right-0 w-44 bg-white bg-opacity-60  p-8 rounded-lg shadow-lg">
+      <div className="absolute top-8 flex flex-col py-4 mx-auto right-0 w-44 bg-black bg-opacity-60  p-8 rounded-lg shadow-lg">
         <div className="cursor-default flex items-center">
           <BsFillPersonFill className="text-emerald-400" />
           <p className="ml-2 text-white">
