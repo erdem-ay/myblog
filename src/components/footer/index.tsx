@@ -1,11 +1,9 @@
 import React from "react";
-import { BsFacebook } from "react-icons/bs";
+import { BsFacebook, BsLinkedin } from "react-icons/bs";
 import { RiTwitterXLine } from "react-icons/ri";
 import { IoLogoYoutube } from "react-icons/io";
-import { FaPinterest } from "react-icons/fa";
-import { FaBehanceSquare } from "react-icons/fa";
-
-
+import { ImGithub } from "react-icons/im";
+import Link from "next/link";
 
 const Footer: React.FC = () => {
   return (
@@ -79,19 +77,32 @@ const Footer: React.FC = () => {
             </h2>
             <ul className="text-gray-500 dark:text-gray-400 font-medium flex">
               <li className="">
-                <BsFacebook />
+              <Link href="https://www.facebook.com/" target="_blank">
+                <BsFacebook  />
+              </Link>
               </li>
               <li className="ml-4">
+              <Link href="https://twitter.com/"target="_blank" >
                 <RiTwitterXLine />
+              </Link>
               </li>
               <li className="ml-4">
-             < IoLogoYoutube/>
+              <Link href="https://www.youtube.com/"  target="_blank">
+                <IoLogoYoutube />
+              </Link>
               </li>
               <li className="ml-4">
-              <FaPinterest/>
+                <Link
+                  href="https://www.linkedin.com/in/erdem-ay/"
+                  target="_blank"
+                >
+                  <BsLinkedin />
+                </Link>
               </li>
               <li className="ml-4">
-           <FaBehanceSquare/>
+              <Link href="https://github.com/erdem-ay" target="_blank">
+                <ImGithub />
+              </Link>
               </li>
             </ul>
           </div>

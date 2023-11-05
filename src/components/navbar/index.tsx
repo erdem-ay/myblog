@@ -81,7 +81,7 @@ const Navbar: React.FC = () => {
           </ul>
         </div>
         <div className="h-8 ml-4 border-[1px] border-white hidden md:block"/>
-        <div className="md:flex items-center mr-16 hidden md:block">
+        <div className="md:flex items-center mr-16 hidden sm:block">
           <ul className="flex items-center">
             <li className="flex ml-4">
               <Link href="https://www.facebook.com/" target="_blank">
