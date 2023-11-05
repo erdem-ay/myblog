@@ -32,7 +32,7 @@ const Navbar: React.FC = () => {
     <nav className="flex justify-between items-center w-1440 h-[80px] bg-black bg-opacity-20">
       <Link href="/">
         <div className="relative font-spartan text-[20px] font-semibold leading-[22px] tracking-0 text-left bg-F8F9FA">
-          <text className="w-[69px] h-[22px] mt-[29px] ml-[70px] text-white font-extrabold">WY BLOG</text>
+          <text className="w-[69px] h-[22px] mt-[29px] ml-[10px] md:ml-[70px] text-white font-extrabold">WY BLOG</text>
         </div>
       </Link>
       <div className="flex">
