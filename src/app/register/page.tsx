@@ -34,7 +34,7 @@ const Register = () => {
       return;
     }
 
-    const nameRegex = /^[A-Za-z]{3,}$/;
+    const nameRegex = /^[A-Za-z]{2,}$/;
     if (!nameRegex.test(firstName) || !nameRegex.test(lastName)) {
       toast.error(
         "The first name and last name fields must contain at least two letters and cannot contain numbers.", {
